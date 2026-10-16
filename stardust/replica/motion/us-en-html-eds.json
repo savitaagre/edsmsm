@@ -206,7 +206,7 @@
       "sel": ".hero-carousel .action.next",
       "frames": [
         {
-          "t": 15406.700000047684,
+          "t": 15389.5,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -214,7 +214,7 @@
           "dots": []
         },
         {
-          "t": 15610.100000023842,
+          "t": 15592,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -222,7 +222,7 @@
           "dots": []
         },
         {
-          "t": 15812,
+          "t": 15793.699999928474,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -230,7 +230,7 @@
           "dots": []
         },
         {
-          "t": 16015.100000023842,
+          "t": 15996.5,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -243,7 +243,7 @@
       "sel": ".hero-carousel .indicator:nth-child(3)",
       "frames": [
         {
-          "t": 17021.900000095367,
+          "t": 17002.799999952316,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -251,7 +251,7 @@
           "dots": []
         },
         {
-          "t": 17224.100000023842,
+          "t": 17204.299999952316,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -259,7 +259,7 @@
           "dots": []
         },
         {
-          "t": 17425.800000071526,
+          "t": 17406.099999904633,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -267,7 +267,7 @@
           "dots": []
         },
         {
-          "t": 17627.5,
+          "t": 17607.699999928474,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -280,7 +280,7 @@
       "sel": ".hero-carousel .action.previous",
       "frames": [
         {
-          "t": 18634.100000023842,
+          "t": 18614.5,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -288,7 +288,7 @@
           "dots": []
         },
         {
-          "t": 18836.600000023842,
+          "t": 18815.799999952316,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -296,7 +296,7 @@
           "dots": []
         },
         {
-          "t": 19038.700000047684,
+          "t": 19017.5,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -304,7 +304,7 @@
           "dots": []
         },
         {
-          "t": 19241.800000071526,
+          "t": 19219.299999952316,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": 0,
@@ -317,7 +317,7 @@
       "sel": "#langNavToggleHeader",
       "frames": [
         {
-          "t": 20252.600000023842,
+          "t": 20230.899999976158,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": null,
@@ -325,7 +325,7 @@
           "dots": []
         },
         {
-          "t": 20454.300000071526,
+          "t": 20432.5,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": null,
@@ -333,7 +333,7 @@
           "dots": []
         },
         {
-          "t": 20655.900000095367,
+          "t": 20634,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": null,
@@ -341,7 +341,7 @@
           "dots": []
         },
         {
-          "t": 20858.5,
+          "t": 20836.299999952316,
           "trackTransform": null,
           "trackTransition": null,
           "boxScrollLeft": null,
@@ -550,7 +550,17 @@
           "opacity": "1",
           "transition": "all"
         },
-        "subs": []
+        "subs": [
+          {
+            "el": "span.social-icon.social-icon-facebook",
+            "transform": "none",
+            "color": "rgb(32, 32, 32)",
+            "background": "rgba(0, 0, 0, 0)",
+            "boxShadow": "none",
+            "opacity": "1",
+            "transition": "all"
+          }
+        ]
       },
       "after": {
         "self": {
@@ -561,7 +571,17 @@
           "opacity": "1",
           "transition": "all"
         },
-        "subs": []
+        "subs": [
+          {
+            "el": "span.social-icon.social-icon-facebook",
+            "transform": "none",
+            "color": "rgb(32, 32, 32)",
+            "background": "rgba(0, 0, 0, 0)",
+            "boxShadow": "none",
+            "opacity": "1",
+            "transition": "all"
+          }
+        ]
       }
     },
     {
@@ -578,7 +598,17 @@
           "opacity": "1",
           "transition": "all"
         },
-        "subs": []
+        "subs": [
+          {
+            "el": "span.header-search-icon",
+            "transform": "none",
+            "color": "rgb(32, 32, 32)",
+            "background": "rgba(0, 0, 0, 0)",
+            "boxShadow": "none",
+            "opacity": "1",
+            "transition": "all"
+          }
+        ]
       },
       "after": {
         "self": {
@@ -589,7 +619,17 @@
           "opacity": "1",
           "transition": "all"
         },
-        "subs": []
+        "subs": [
+          {
+            "el": "span.header-search-icon",
+            "transform": "none",
+            "color": "rgb(32, 32, 32)",
+            "background": "rgba(0, 0, 0, 0)",
+            "boxShadow": "none",
+            "opacity": "1",
+            "transition": "all"
+          }
+        ]
       }
     },
     {

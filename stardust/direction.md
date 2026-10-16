@@ -42,3 +42,13 @@ Fidelity: ia verbatim · design verbatim · content verbatim.
   motion-observe's hover diff does not sample `text-decoration` (footer nav underline), and no shipped
   instrument reads the geometry of an overlay revealed by a click (language menu `left`). Each was run
   on live and on the prototype; results are recorded in `stardust/replica/progress.json` § motion.
+- **Delivery transport (deploy § Deploy (DA Source API) vs its EMA box).** The deploy skill's EMA-only box
+  says that inside Experience Catalyst the agent stops after Step 9 (no DA PUT / preview; the platform UI
+  uploads). This session's operator instructions document the opposite path — POST to the DA source API
+  and admin.hlx.page with credentials injected when the owner's opt-in is on — and every write was
+  accepted. The operator path was followed so the replica published-origin gate could run on a real
+  preview origin. Authored DA documents live under `stardust/deploy/content/` (never `./content/`, per the
+  project rule). Preview only; nothing published live.
+- **gate-all state input.** gate-all selects `status: "deployed"` pages with a `liveUrl`; state.mjs has no
+  such status. The final gate-all ran on a derived copy (`stardust/.work/rollout/state-deployed.json`);
+  `stardust/state.json` records the page as `migrated`.

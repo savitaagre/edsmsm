@@ -83,3 +83,28 @@ Each note: what happened → why it matters → suggested fix.
 21. **Rendition residual at 360**: live serves width-specific renditions (290px), the prototype the
    originals; sub-pixel aspect differences round the footer by 1px and fail the 2% footer crop. → The
    crop-compare guidance could recognise a uniform ±1px offset (try shifted alignment) before failing.
+22. **(Delivery) The deploy skill's EMA box contradicts the operator's DA instructions.** The box says inside
+   Experience Catalyst never PUT to DA / preview (no credentials by design), but this runtime's operator
+   prompt documents exactly that path with injected credentials, and it worked. Its detection rule ("you are
+   in /workspace/…, the plugin lives under .excat-marketplaces/") is also ambiguous when the project root is
+   elsewhere. → Detect capability (a DA write probe), not paths, and reconcile with the operator prompt.
+23. **(Delivery) `gate-all --stage published` needs `status: "deployed"` + `liveUrl`**, but `state.mjs`
+   cannot write `deployed` (statuses end at `migrated`). Both units had to hand it a derived state copy. →
+   Add `state.mjs deployed <slug> --url <preview>` or let gate-all read rollout coverage / `--url`.
+24. **(Delivery) `section-schema.mjs` only detects `<section>` elements**; a replica prototype built from an
+   AEM-grid source has divs. The unit annotated a copy. → Accept `--sections <selector list>`.
+25. **(Delivery) content-diff can't see icons painted on a non-empty link's `::before`** (MISSING ICON 🔴
+   while crops were 100 %). The fix was to mirror the source's empty icon span, which is fine, but the red
+   reads as a real defect. → Count `::before` glyphs on the anchor as the icon.
+26. **(Delivery) Pipeline attribute losses aren't documented in the ENCODE contract:** image `title` →
+   `data-title` (dropped when equal to alt); no authorable `aria-label` on links. Both needed foundation
+   code. → Document both in deploy § ENCODE with the shipped restore snippet.
+27. **(Delivery) Rollout A–I for a single-URL replica.** The replica card says Phase 5 delegates to
+   migrate → deploy → rollout "unchanged", but most rollout phases (inventory, clusters, sitemap, link audit,
+   dashboard) presuppose a site. → State the minimum Phase 5 for a bounded run (C0 → C-archetype → C-final +
+   published gate) explicitly.
+28. **(Delivery) Reusing an existing EDS implementation isn't covered.** This repo already had a WKND
+   foundation; the skills assume a fresh boilerplate. A baseline gate of the existing implementation (50.91 %)
+   was what justified rebuilding. → Add a "baseline the existing build" step to deploy Step 2's reuse decision.
+29. **(Workflow) Subagent briefs are long because the contract is long.** Each delivery unit needed ~1k words
+   of brief. → Ship brief templates for C0 / C-archetype in the handoff card.

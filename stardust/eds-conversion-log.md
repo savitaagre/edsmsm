@@ -244,3 +244,18 @@ Preview only (`--no-publish`). Publishing live is the owner's decision after PR 
   `--only us-en-html` 1440 PASS 0.25 % Δh 0, 360 PASS 1.73 % Δh −1, clip 0, content 0/0 (browser
   tier chromium-fallback — Chrome not installed).
 - Residual 🟡: Climbing NZ image title not delivered (title == alt; the pipeline drops it).
+
+## C-final (main agent, 2026-10-16T14:36:23Z)
+
+- foundation-freeze check before applying: unchanged (31 files). Requests applied once (commit 4e3fc33):
+  generic `main > .section.separator`; decorateButtons() promotes an authored title ≠ text to aria-label;
+  restoreImageTitles() in decorateMain; header/footer icon glyphs in empty inline spans; obsolete
+  splitHomepageSections() removed. Interim copies removed from the blocks. Re-frozen after.
+- hero-carousel indicators mirror the hidden live slide titles (@ew-exempt presentational copy).
+- Register R-01 (applied): hero slide 1 title authored as the page's one h1 (no visual change).
+- Published-origin gate pub3: 1440 0.25 % Δh 0 · 360 1.73 % Δh −1 · 0 structural 🔴 · presence MISSING 0 /
+  HIDDEN 0 · clip 0 · overflow ok · crops header 100.00 / 99.86 %, footer 100.00 / 96.91 % (99.23 % with
+  the 1px rendition offset aligned) · motion 10/10 + 3/3 · gate-all (full verdict) PASS at 1440 and 360.
+- gate-all reads `status: deployed` + `liveUrl`, which state.mjs cannot write; it ran on a derived copy
+  (stardust/.work/rollout/state-deployed.json) — state.json itself is `migrated`.
+- Publish: still preview-only. Nothing published live.

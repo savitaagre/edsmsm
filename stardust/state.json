@@ -1,7 +1,7 @@
 {
   "_provenance": {
     "writtenBy": "stardust:replica",
-    "writtenAt": "2026-10-16T13:13:04Z",
+    "writtenAt": "2026-10-16T14:35:57Z",
     "stardustVersion": "plugin@excat-extended"
   },
   "site": {
@@ -23,7 +23,7 @@
       "url": "https://wknd.site/us/en.html",
       "title": "WKND Adventures and Travel",
       "type": "landing",
-      "status": "approved",
+      "status": "migrated",
       "history": [
         {
           "status": "extracted",
@@ -37,13 +37,17 @@
           "status": "approved",
           "at": "2026-10-16T13:13:04Z",
           "approvedBy": "hands-off"
+        },
+        {
+          "status": "migrated",
+          "at": "2026-10-16T14:35:57Z"
         }
       ],
       "stale": false,
       "staleReason": null,
       "currentStatePath": "stardust/current/pages/us-en-html.json",
       "prototypePath": "stardust/prototypes/us-en-html-proposed.html",
-      "migratedPath": null
+      "migratedPath": "stardust/deploy/content/us/en.html"
     }
   ]
 }

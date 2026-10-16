@@ -146,3 +146,51 @@ feature branch from main.
 **Next:** Phase 5 — handoff to deploy (EDS blocks + DA content), published-origin gate.
 
 ---
+
+## 2026-10-16T14:36:23Z — Handoff — /us/en delivered to EDS preview; published-origin gate PASS at 1440 and 360
+
+**Prompt:** (replica Phase 5) deliver the gated archetype: C0 foundation → C-archetype → C-final, gate on the
+published (preview) origin.
+
+**Decisions:**
+- Foundation rebuilt, not reused: the existing implementation baselined at 50.91 % vs live (header band
+  44.6 %). Existing tokens kept so the 21 adventure/magazine documents still resolve them.
+- Locked blocks: hero-carousel, featured-teaser, image-list, hero-teaser (archetype names — `carousel`
+  powers the adventure galleries); titles, buttons, separators are default content / section styles.
+- C0 (subagent): styles/fonts/favicon/header/footer + /nav, /footer, /drafts/wknd-shell; header parity
+  quiet, crops 100.00 / 99.86 %; frozen + committed.
+- C-archetype (subagent): 4 blocks + /us/en; pub2 0.25 % / 1.73 %, 6 structural reds, 5 foundation requests.
+- C-final (main): requests applied once (separator style, aria-label from authored title, image titles,
+  icon spans, obsolete splitHomepageSections removed); carousel indicators mirror the hidden live slide
+  titles (granularity-parity policy: widget DOM mirrored, not justified) → 0 red. Register R-01 added
+  (delivery-required h1, no visual change).
+- Transport: DA writes + preview via the operator-documented injected-credential path (the deploy
+  skill's EMA box says stop before transport; named deviation, see direction.md). Preview only.
+- Scope: one URL, no siblings → rollout phases A, B, D–I (site-wide) not run; internal links to
+  not-yet-migrated pages are scope debt.
+
+**Artifacts touched:**
+- styles/, fonts/, icons/flags/, head.html, favicon.png, blocks/{header,footer,hero-carousel,featured-teaser,image-list,hero-teaser}/, scripts/scripts.js — created/updated
+- stardust/deploy/content/{nav,footer,us/en,drafts/wknd-shell}.html, stardust/eds-schema/, stardust/deploy/media-ledger.json — created
+- stardust/rollout/{progress.json,foundation-freeze.json,foundation-requests.md} — created
+- stardust/replica/{progress.json,inconsistency-register.md} — updated; state.json → migrated
+
+**Findings worth flagging:**
+- Final: 1440 0.25 % Δh 0 · 360 1.73 % Δh −1 · 0 structural red · presence MISSING 0 / HIDDEN 0 · clip 0 ·
+  motion 10/10 + 3/3 · gate-all PASS ×2. 360 footer crop 96.91 % = a 1px rendition offset (99.23 % aligned).
+
+**Open questions:**
+- D1 Sign In backend, D2 analytics tags, D3 locale trees (stardust/dynamic-features.md).
+- Publish live, and when to preview/publish the 21 existing documents under the new foundation.
+
+**Next:** PR from feat/wknd-home-replica with the preview link (AGENTS.md); owner review.
+
+---
+
+## 2026-10-16T14:36:54Z — C-deliver — units foundation, archetype-landing, final done (see the Handoff entry above)
+
+**Prompt:** (rollout C-deliver as replica Phase 5 delivery) — recorded unit by unit in stardust/rollout/progress.json.
+
+**Decisions:** see Handoff entry. **Artifacts touched:** stardust/rollout/progress.json — updated. **Open questions:** none new. **Next:** PR.
+
+---
