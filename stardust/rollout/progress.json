@@ -1,7 +1,54 @@
 {
   "units": {
-    "foundation": { "status": "running", "kind": "foundation", "templates": ["landing"], "pages": 0, "blocks": 2, "gates": {}, "startedAt": "2026-10-16T13:18:21Z", "endedAt": null, "verdict": null },
-    "archetype-landing": { "status": "pending", "kind": "archetype", "templates": ["landing"], "pages": 1, "blocks": 4, "gates": {}, "startedAt": null, "endedAt": null, "verdict": null },
-    "final": { "status": "pending", "kind": "final", "templates": ["landing"], "pages": 1, "blocks": 0, "gates": {}, "startedAt": null, "endedAt": null, "verdict": null }
+    "foundation": {
+      "status": "done",
+      "kind": "foundation",
+      "templates": [
+        "landing"
+      ],
+      "pages": 0,
+      "blocks": 2,
+      "gates": {
+        "1440": {
+          "headerCrop": "100.00%",
+          "chromeParity": "header 0 style/geometry deltas"
+        },
+        "360": {
+          "headerCrop": "99.86%",
+          "chromeParity": "header 0 style/geometry deltas"
+        },
+        "crop": "header 100.00/99.86 on /drafts/wknd-shell",
+        "chrome": "1 justified delta per root (DA media rename)"
+      },
+      "startedAt": "2026-10-16T13:18:21Z",
+      "endedAt": "2026-10-16T13:48:23Z",
+      "verdict": "foundation: header parity 1440 PASS/360 PASS (logo filename signature only \u2014 DA content hash), footer internal geometry identical (uniform \u0394y on the short shell page), lint pass, pushed 51f8bee, docs nav/footer/shell previewed 200/200/200"
+    },
+    "archetype-landing": {
+      "status": "running",
+      "kind": "archetype",
+      "templates": [
+        "landing"
+      ],
+      "pages": 1,
+      "blocks": 4,
+      "gates": {},
+      "startedAt": null,
+      "endedAt": null,
+      "verdict": null
+    },
+    "final": {
+      "status": "pending",
+      "kind": "final",
+      "templates": [
+        "landing"
+      ],
+      "pages": 1,
+      "blocks": 0,
+      "gates": {},
+      "startedAt": null,
+      "endedAt": null,
+      "verdict": null
+    }
   }
 }
