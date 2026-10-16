@@ -75,6 +75,14 @@ Preview only (`--no-publish`). Publishing live is the owner's decision after PR 
 - Token gate: blocks reference two undeclared properties, both intentional per-element inline
   properties set by `header.js` (`--lang-flag` with a US fallback, `--flag` per country).
 
+## Step 5 — Buttons
+
+- Runtime is bare-links-too (`runtime-contract.json`): `p.button-wrapper > a.button(.primary)`.
+  The foundation paints `a.button` as the prototype `.btn-primary` (no inner text span needed:
+  48px border-box with 16px 32px padding puts the 21px label exactly where the span sat).
+  `.primary` / `.accent` share the yellow paint; `.secondary` keeps an inset 2px outline for the
+  other documents. Chrome fragments are also run through decorateButtons(); header/footer undo it.
+
 ## Step 4 — Fonts
 
 - `fonts/*.woff2` did NOT match the capture: all seven were a different subset build (Asar 14 KB vs
@@ -117,3 +125,22 @@ Preview only (`--no-publish`). Publishing live is the owner's decision after PR 
   Sign In / Sign Out stay `#sign-in` / `#sign-out` with no backend.
 - Internal chrome hrefs are root-relative and extensionless (`/us/en`, `/us/en/magazine`,
   `/us/en/ai-powered-search` …); footer legal links stay external, fully qualified.
+
+## C0 deploy + chrome gate (preview only)
+
+- Code: `feat/wknd-home-replica` pushed, code sync 202, `/blocks/header/header.js` served.
+- DA: `media/chrome/wknd-logo-dk.svg` + `wknd-logo-light.svg` (201), `nav.html`, `footer.html`,
+  `drafts/wknd-shell.html` (sanitised, 200/201); preview 200 ×3 (never published live).
+  Delivered `nav.plain.html` / `footer.plain.html` 200, 0 `about:error`; delivered SVGs are
+  byte-identical to the capture.
+- chrome-parity vs live (`drafts/wknd-shell`): header 1440 6/6 texts + 360 2/2 texts, 0 geometry /
+  style deltas; the ONE reported delta is the logo icon signature (`wknd-logo-dk.svg` →
+  `media_1930…svg`) — content-addressed DA media naming, same bytes. Footer: every item offset by
+  the same Δy (short shell main: −3090 @1440, −4856 @360), internal geometry/style identical.
+- crop-compare header band vs live: 1440 y0+200 100.00 %; 360 y0+117 99.86 % (the shell page is
+  1018px tall at 360, so the stitched capture repeats the fixed header at the y=118 seam).
+- Behaviour probe (EDS shell vs prototype, identical results): scrolly at 16px → bar 15/5 +
+  shadow, header 193.6 → 113.6px; language menu left 881.98px (= prototype), showMenu/open,
+  7 flags, en-US underlined, outside click closes; hovers #ffea00 / underline; 360 panel
+  −275 → 0, toggle x 285, main x 275; Welcome / Sign Out / Home present and unrendered; no
+  `<header>` inside the blocks; 0 console errors.
