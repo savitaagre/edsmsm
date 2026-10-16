@@ -74,22 +74,3 @@ main .image-list-container > div {
     padding-right: 0;
   }
 }
-
-/* Separator (source .separator > hr: 1px solid #ebebeb, 64px above/below,
-   inside the content shell). Authored as an empty section with section
-   metadata `style: separator` (an authored <hr> is the section delimiter).
-   Interim scoped rule — both separators follow an image-list section — until
-   the foundation ships a generic `.section.separator`
-   (stardust/rollout/foundation-requests.md). */
-main > .section.image-list-container + .section.separator {
-  padding: 64px var(--gutter);
-}
-
-main > .section.image-list-container + .section.separator::before {
-  content: "";
-  display: block;
-  max-width: calc(var(--shell) - 2 * var(--gutter));
-  height: 0;
-  margin: 0 auto;
-  border: 1px solid var(--surface-grey);
-}

@@ -168,7 +168,11 @@ function buildSearch(nodes) {
     const span = document.createElement('span');
     span.className = 'header-search-label';
     span.append(...link.childNodes);
-    link.append(span);
+    // the glyph sits in an empty inline span, as on the source (.cmp-button__icon--search)
+    const icon = document.createElement('span');
+    icon.className = 'header-search-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    link.append(icon, span);
   }
   return wrap;
 }

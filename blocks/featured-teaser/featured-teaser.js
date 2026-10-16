@@ -50,14 +50,9 @@ function collectNodes(block) {
   return out.length ? out : [...block.children];
 }
 
-// The pipeline delivers an authored image title as data-title: restore the
-// title attribute (source parity). A CTA title derived by decorateButtons()
-// (= its text) is not on the source and is dropped.
-function restoreTitles(root) {
-  root.querySelectorAll('img[data-title]').forEach((img) => {
-    if (!img.title) img.title = img.dataset.title;
-    img.removeAttribute('data-title');
-  });
+// A CTA title derived by decorateButtons() (= its text) is not on the source
+// and is dropped. (Image titles are restored once in decorateMain.)
+function dropDerivedTitles(root) {
   root.querySelectorAll('a[title]').forEach((a) => {
     if (a.title === a.textContent) a.removeAttribute('title');
   });
@@ -98,5 +93,5 @@ export default async function decorate(block) {
     if (slot.childElementCount) content.append(slot);
   });
   block.replaceChildren(content, image);
-  restoreTitles(block);
+  dropDerivedTitles(block);
 }

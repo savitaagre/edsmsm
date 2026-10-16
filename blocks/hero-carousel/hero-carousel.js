@@ -12,8 +12,9 @@
  * Decode tier: reconstructive (repeat group). One slide per row when the block
  * has several rows; a flattened single-cell shape is segmented on the heading
  * boundary (#69) — media before a heading belongs to that heading's slide.
- * Every authored node is MOVED (EW1); controls are generated and carry no
- * text (aria-label only, #100). State classes mirror live:
+ * Every authored node is MOVED (EW1); controls are generated (aria-label, #100);
+ * each indicator carries a hidden copy of its slide title, as on live
+ * (@ew-exempt). State classes mirror live:
  * cmp-carousel__item--active / cmp-carousel__indicator--active.
  */
 
@@ -62,14 +63,9 @@ function collectNodes(scope) {
   return out;
 }
 
-// The pipeline delivers an authored image title as data-title: restore the
-// title attribute (source parity). A CTA title derived by decorateButtons()
-// (= its text) is not on the source and is dropped.
-function restoreTitles(root) {
-  root.querySelectorAll('img[data-title]').forEach((img) => {
-    if (!img.title) img.title = img.dataset.title;
-    img.removeAttribute('data-title');
-  });
+// A CTA title derived by decorateButtons() (= its text) is not on the source
+// and is dropped. (Image titles are restored once in decorateMain.)
+function dropDerivedTitles(root) {
   root.querySelectorAll('a[title]').forEach((a) => {
     if (a.title === a.textContent) a.removeAttribute('title');
   });
@@ -178,11 +174,18 @@ export default async function decorate(block) {
     controls.append(prev, next);
 
     const indicators = el('ol', 'indicators', { role: 'tablist', 'aria-label': 'Choose a slide to display' });
-    dots = slides.map((s, i) => el('li', 'indicator', {
-      role: 'tab',
-      'aria-label': `Slide ${i + 1}`,
-      'aria-controls': s.id,
-    }));
+    // @ew-exempt indicator label: a hidden presentational copy of the slide's authored
+    // heading, mirroring the live indicator text (font-size 0); the authored heading itself
+    // is moved, never copied, and decorate() is re-entrant, so an edit re-labels the dot.
+    dots = slides.map((s, i) => {
+      const dot = el('li', 'indicator', {
+        role: 'tab',
+        'aria-label': `Slide ${i + 1}`,
+        'aria-controls': s.id,
+      });
+      dot.textContent = s.querySelector(HEADING)?.textContent.trim() || '';
+      return dot;
+    });
     indicators.append(...dots);
     parts.push(controls, indicators);
 
@@ -213,5 +216,5 @@ export default async function decorate(block) {
   }
 
   block.replaceChildren(...parts);
-  restoreTitles(block);
+  dropDerivedTitles(block);
 }

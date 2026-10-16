@@ -57,7 +57,12 @@ function decorateSocial(list) {
     const span = document.createElement('span');
     span.className = 'social-btn-text';
     span.append(...a.childNodes); // moved, not copied (EW1)
-    a.append(span);
+    // the glyph sits in an empty inline span, as on the source (.cmp-button__icon)
+    const network = ['facebook', 'twitter', 'instagram'].find((n) => a.href.toLowerCase().includes(n));
+    const icon = document.createElement('span');
+    icon.className = network ? `social-icon social-icon-${network}` : 'social-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    a.append(icon, span);
   });
 }
 

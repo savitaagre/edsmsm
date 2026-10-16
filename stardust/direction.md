@@ -22,7 +22,7 @@ its descriptive synthesis (Phases 3–6), so `stardust/current/PRODUCT.md` exist
 synthesis does not apply (never mix the branches).
 
 Permitted deltas: ONLY the entries of stardust/replica/inconsistency-register.md
-(empty — pure replica).
+(1 entry: R-01, the delivery-required h1 — see the register).
 
 Fidelity: ia verbatim · design verbatim · content verbatim.
 

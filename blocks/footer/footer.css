@@ -112,9 +112,16 @@
   line-height: 14px;
 }
 
-.footer .site-footer-social a::before {
+
+.footer .site-footer-social .social-icon {
   float: left;
   padding: 18px 0 0 14px;
+  font-family: var(--font-icon);
+  font-size: 17.5px;
+  line-height: 17.5px;
+}
+
+.footer .site-footer-social .social-icon::before {
   font-family: var(--font-icon);
   font-size: 17.5px;
   font-style: normal;
@@ -124,15 +131,15 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.footer .site-footer-social a[href*="facebook" i]::before {
+.footer .site-footer-social .social-icon-facebook::before {
   content: "\e902";
 }
 
-.footer .site-footer-social a[href*="twitter" i]::before {
+.footer .site-footer-social .social-icon-twitter::before {
   content: "\e901";
 }
 
-.footer .site-footer-social a[href*="instagram" i]::before {
+.footer .site-footer-social .social-icon-instagram::before {
   content: "\e903";
 }
 
