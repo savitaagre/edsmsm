@@ -1,12 +1,15 @@
 /*
  * brand.css — WKND global design tokens
  * Extracted from https://wknd.site/us/en.html (real computed values).
+ * The second :root group is lifted verbatim from the gated replica prototype
+ * (stardust/prototypes/us-en-html.css, source-fidelity gate 1440/360).
  */
 
 :root {
-  /* fonts */
-  --heading-font-family: "Asar", georgia, "Times New Roman", times, serif;
-  --body-font-family: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
+  /* fonts — every stack names its metric-matched -fallback face second
+     (declared in styles.css; brand faces in fonts.css load after first paint) */
+  --heading-font-family: asar, asar-fallback, georgia, "Times New Roman", times, serif;
+  --body-font-family: "Source Sans Pro", source-sans-pro-fallback, "Helvetica Neue", helvetica, arial, sans-serif;
 
   /* colors */
   --background-color: #fff;
@@ -32,8 +35,35 @@
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
 
-  /* spacing */
-  --nav-height: 88px;
+  /* spacing — the fixed header's in-flow reservation (page-root padding-top on
+     wknd.site): 200px at >=1025px, 130px at <=1024px (see the media query below) */
+  --nav-height: 200px;
+
+  /* replica prototype tokens (verbatim) */
+  --text: #202020;
+  --text-inverse: #ebebeb;
+  --text-muted: dimgray;
+  --link: #0045ff;
+  --brand-yellow: #ffea00;
+  --surface-grey: #ebebeb;
+  --surface-light: #f7f7f7;
+  --body-bg: #fff;
+  --font-sans: var(--body-font-family);
+  --font-serif: var(--heading-font-family);
+  --font-icon: wknd-icon-font;
+  --fs-small: 14px;
+  --fs-xsmall: 12px;
+  --button-size: 48px;
+  --utility-height: 25px;
+  --shell: 1164px;
+  --gutter: 14px;
+  --max-width: 1680px;
+}
+
+@media (width <= 1024px) {
+  :root {
+    --nav-height: 130px;
+  }
 }
 
 /* Heading sizes are breakpoint-independent on wknd.site, so there is no

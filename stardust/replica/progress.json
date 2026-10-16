@@ -1,0 +1,202 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:replica",
+    "writtenAt": "2026-10-16T13:13:00Z",
+    "liveUrl": "https://wknd.site/us/en.html",
+    "prototype": "stardust/prototypes/us-en-html-proposed.html",
+    "iterationNote": "iter1 = first --full map; fix iterations: 1 (column BFC + hidden nodes + footer) \u2192 iter2 pixel; 2 (content cap, toggle size, greeting role) \u2192 iter4 --full; 3 (titles, aria, social font, toggle line-height) \u2192 iter5 --full; iter6 = confirmation of the Home-link visibility finding from iter5 (no new fix scope). Cap of 3 fix iterations per breakpoint respected."
+  },
+  "pageTypes": {
+    "landing": {
+      "archetype": "us-en-html",
+      "status": "approved",
+      "approvedBy": "hands-off",
+      "breakpoints": {
+        "1440": {
+          "iterations": 3,
+          "result": {
+            "structuralRed": 0,
+            "visualFlags": "11 justified",
+            "pixelPct": 0.2,
+            "heightDelta": 0,
+            "chromeParity": "quiet",
+            "clipped": 0,
+            "overflow": "ok",
+            "pass": true
+          },
+          "crops": {
+            "header": "100.00% match (y0+194)",
+            "footer": "100.00% match (y3494+260)"
+          },
+          "justified": [
+            {
+              "probe": "visual",
+              "flag": "STRETCHED IMAGE \u00d711",
+              "why": "object-fit: cover crops \u2014 the source CSS sets object-fit: cover on the same images (hero, featured teaser, image-list cards, Climbing NZ teaser)"
+            }
+          ],
+          "residuals": [
+            {
+              "band": "y 1000\u20131500",
+              "pct": 0.9,
+              "cause": "image resampling texture (live serves width renditions, prototype the 1280px originals)",
+              "flaggedFor": "delivery"
+            }
+          ],
+          "captureState": []
+        },
+        "360": {
+          "iterations": 3,
+          "result": {
+            "structuralRed": 0,
+            "visualFlags": "8 justified",
+            "pixelPct": 2.08,
+            "heightDelta": -1,
+            "chromeParity": "quiet",
+            "clipped": 0,
+            "overflow": "ok",
+            "pass": true
+          },
+          "crops": {
+            "header": "99.86% match (y0+117)",
+            "footer": "96.92% match (y5281+593) \u2014 residual below"
+          },
+          "justified": [
+            {
+              "probe": "visual",
+              "flag": "STRETCHED IMAGE \u00d78",
+              "why": "object-fit: cover crops, as in the source CSS"
+            }
+          ],
+          "residuals": [
+            {
+              "band": "y 3000\u20133500",
+              "pct": 5.6,
+              "cause": "resampling texture on the Climbing New Zealand photo: live serves a 290\u00d7193 rendition upscaled to 360px, prototype a 1280\u00d7853 original downscaled; geometry identical",
+              "flaggedFor": "delivery"
+            },
+            {
+              "band": "y 4000\u20134500",
+              "pct": 4.7,
+              "cause": "same rendition texture on the adventure card photos (live 172\u00d7120 renditions at 260\u00d7200)",
+              "flaggedFor": "delivery"
+            },
+            {
+              "region": "footer",
+              "pct": 3.08,
+              "cause": "1px vertical offset: the 1280\u00d7853 original vs the live 290\u00d7193 rendition gives the Climbing NZ image a 0.32px taller box (teaser 615.41 vs 614.89px), which rounds the footer 1px lower; ghosting is glyph edges only",
+              "parity": "gates/us-en-html-360/chrome-parity-iter6.txt (quiet)",
+              "texture": {
+                "thickPct": 34.4
+              },
+              "flaggedFor": "delivery"
+            }
+          ],
+          "captureState": []
+        },
+        "2560": {
+          "result": {
+            "capProbe": "PASS \u2014 0 of 5 rows failed (shell 1680, modules 1192/1164/1192/1164)",
+            "evidence": "gates/us-en-html-2560/cap-iter.json"
+          }
+        }
+      },
+      "motion": {
+        "observed": [
+          "stardust/replica/motion/us-en-html.json",
+          "stardust/replica/motion/us-en-html-hover.json",
+          "stardust/replica/motion/us-en-html-360.json"
+        ],
+        "implemented": [
+          "header scroll morph: body.scrolly at scrollTop > 15; .header-bar padding 50/50 \u2192 15/5 (\u22651025), box-shadow 0 8px 20px rgba(0,0,0,.26); transition padding .5s (the -webkit- fallback Chrome applies)",
+          "hero carousel: prev / next / indicator click \u2192 cmp-carousel__item--active + cmp-carousel__indicator--active; slide fadeIn .5s",
+          "language menu: toggle click \u2192 left = toggle.position().left \u2212 240, showMenu / open; window click elsewhere closes",
+          "mobile nav (\u22641024): toggle click \u2192 body.navPanel-visible; transform .5s on panel, toggle and page root",
+          "hover: header nav links background #ffea00; header search background #ffea00; footer nav links underline (text-decoration, verified by named-deviation probe)"
+        ],
+        "dead": [
+          "carousel autoplay (data-cmp-delay=5000 present but no autoplay; 0 idle class mutations)",
+          "hover on image-list cards and title links, teaser CTAs, primary buttons, social buttons, Sign In (no measured change)"
+        ],
+        "compare": "motion-compare: 10 parity, 0 missing, 0 extra, 0 advisory (stardust/replica/motion/us-en-html-compare.json); mobile: 3 parity",
+        "pixelAfterMotion": {
+          "1440": 0.2,
+          "360": 2.08
+        }
+      },
+      "published": {
+        "origin": "https://feat-wknd-home-replica--edsmsm--savitaagre.aem.page/us/en",
+        "regime": "published (preview origin, never published live)",
+        "1440": {
+          "pixel": 0.25,
+          "heightDelta": 0,
+          "structuralRed": 0,
+          "clipped": 0,
+          "presence": "MISSING 0 / HIDDEN 0",
+          "crops": {
+            "header": "100.00%",
+            "footer": "100.00%"
+          },
+          "gateAll": "PASS"
+        },
+        "360": {
+          "pixel": 1.73,
+          "heightDelta": -1,
+          "structuralRed": 0,
+          "clipped": 0,
+          "presence": "MISSING 0 / HIDDEN 0",
+          "crops": {
+            "header": "99.86%",
+            "footer": "96.91% (99.23% with --y-b +1: rendition offset)"
+          },
+          "gateAll": "PASS"
+        },
+        "justified": [
+          {
+            "probe": "content",
+            "flag": "\ud83d\udfe0 EXTRA [header] nav links / Home / Search",
+            "why": "the EDS header block hosts the mobile nav panel and toggle, which live renders outside <header>; Search is the hidden label of the icon link (DA cannot author an icon-only link); content-presence extra 0"
+          },
+          {
+            "probe": "content",
+            "flag": "\ud83d\udfe1 EXTRA TITLE [footer] links",
+            "why": "boilerplate decorateButtons() sets title = text on paragraph links (runtime convention)"
+          },
+          {
+            "probe": "content",
+            "flag": "\ud83d\udfe1 MISSING TITLE Climbing NZ image",
+            "why": "pipeline drops an image title equal to its alt; not recoverable client-side"
+          },
+          {
+            "probe": "chrome",
+            "flag": "ICON signature wknd-logo-*.svg \u2192 media_<hash>",
+            "why": "DA content-addresses uploaded media; bytes identical"
+          }
+        ],
+        "residuals": [
+          {
+            "band": "1440 y 1000\u20131500",
+            "pct": 0.9,
+            "cause": "image texture: live renditions vs EDS optimized renditions",
+            "flaggedFor": "user"
+          },
+          {
+            "band": "360 y 3000\u20135000",
+            "pct": "3.5\u20135.1",
+            "cause": "same rendition texture on the Climbing NZ and card photos",
+            "flaggedFor": "user"
+          },
+          {
+            "region": "360 footer",
+            "pct": 3.09,
+            "cause": "1px offset from the rendition aspect of the Climbing NZ image (99.23% aligned)",
+            "flaggedFor": "user"
+          }
+        ],
+        "register": [
+          "R-01 applied: delivery-required h1 on hero slide 1 (no visual change)"
+        ]
+      }
+    }
+  }
+}

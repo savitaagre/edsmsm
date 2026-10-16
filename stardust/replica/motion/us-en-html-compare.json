@@ -1,0 +1,166 @@
+{
+  "live": "stardust/replica/motion/us-en-html.json",
+  "build": "stardust/replica/motion/us-en-html-build.json",
+  "toleranceMs": 150,
+  "tolerancePx": 8,
+  "advisory": true,
+  "findings": 0,
+  "counts": {
+    "behaviors": 21,
+    "parity": 10,
+    "missing": 0,
+    "extra": 0,
+    "tolerance": 0,
+    "dead": 11,
+    "advisory": 0
+  },
+  "verdicts": [
+    {
+      "cls": "header",
+      "name": "scroll-morph",
+      "state": "parity",
+      "note": "Δheight 80px, restore at y≤0, 500ms",
+      "line": "motion header scroll-morph: parity (Δheight 80px, restore at y≤0, 500ms)"
+    },
+    {
+      "cls": "widget",
+      "name": ".cmp-carousel__action--next → .hero-carousel__action--next",
+      "state": "dead",
+      "note": "no sampled change across the frames (track/scroll/box/indicator)",
+      "line": "motion widget .cmp-carousel__action--next → .hero-carousel__action--next: dead on live — not required (no sampled change across the frames (track/scroll/box/indicator))"
+    },
+    {
+      "cls": "widget",
+      "name": ".cmp-carousel__indicator:nth-child(3) → .hero-carousel__indicator:nth-child(3)",
+      "state": "dead",
+      "note": "no sampled change across the frames (track/scroll/box/indicator)",
+      "line": "motion widget .cmp-carousel__indicator:nth-child(3) → .hero-carousel__indicator:nth-child(3): dead on live — not required (no sampled change across the frames (track/scroll/box/indicator))"
+    },
+    {
+      "cls": "widget",
+      "name": ".cmp-carousel__action--previous → .hero-carousel__action--previous",
+      "state": "dead",
+      "note": "no sampled change across the frames (track/scroll/box/indicator)",
+      "line": "motion widget .cmp-carousel__action--previous → .hero-carousel__action--previous: dead on live — not required (no sampled change across the frames (track/scroll/box/indicator))"
+    },
+    {
+      "cls": "widget",
+      "name": "#langNavToggleHeader",
+      "state": "dead",
+      "note": "no sampled change across the frames (track/scroll/box/indicator)",
+      "line": "motion widget #langNavToggleHeader: dead on live — not required (no sampled change across the frames (track/scroll/box/indicator))"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-navigation--header .cmp-navigation__item--level-1 > a → .header-nav li > a",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-navigation--header .cmp-navigation__item--level-1 > a → .header-nav li > a: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-image-list__item → .image-list__item",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-image-list__item → .image-list__item: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-teaser__action-link → .btn-teaser",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-teaser__action-link → .btn-teaser: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-button--primary .cmp-button → .btn-primary",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-button--primary .cmp-button → .btn-primary: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-navigation--footer .cmp-navigation__item-link → .site-footer__nav li > a",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-navigation--footer .cmp-navigation__item-link → .site-footer__nav li > a: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-button--icononly .cmp-button → .social-btn",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-button--icononly .cmp-button → .social-btn: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-button--header-search .cmp-button → .header-search",
+      "state": "parity",
+      "note": "self.background; n/a; paired by order",
+      "line": "motion hover .cmp-button--header-search .cmp-button → .header-search: parity (self.background; n/a; paired by order)"
+    },
+    {
+      "cls": "hover",
+      "name": ".cmp-image-list__item-title-link → .image-list__title-link",
+      "state": "dead",
+      "note": "no measured hover diff",
+      "line": "motion hover .cmp-image-list__item-title-link → .image-list__title-link: dead on live — not required (no measured hover diff)"
+    },
+    {
+      "cls": "entrance",
+      "name": "fadeIn",
+      "state": "parity",
+      "note": "fired on 3 element(s)",
+      "line": "motion entrance fadeIn: parity (fired on 3 element(s))"
+    },
+    {
+      "cls": "transition",
+      "name": "padding-bottom",
+      "state": "parity",
+      "note": "2 event(s) on live, 2 on build, 500ms",
+      "line": "motion transition padding-bottom: parity (2 event(s) on live, 2 on build, 500ms)"
+    },
+    {
+      "cls": "transition",
+      "name": "padding-top",
+      "state": "parity",
+      "note": "2 event(s) on live, 2 on build, 500ms",
+      "line": "motion transition padding-top: parity (2 event(s) on live, 2 on build, 500ms)"
+    },
+    {
+      "cls": "class",
+      "name": "cmp-carousel__indicator--active",
+      "state": "parity",
+      "note": "added 3× on live, 3× on build",
+      "line": "motion class cmp-carousel__indicator--active: parity (added 3× on live, 3× on build)"
+    },
+    {
+      "cls": "class",
+      "name": "cmp-carousel__item--active",
+      "state": "parity",
+      "note": "added 3× on live, 3× on build",
+      "line": "motion class cmp-carousel__item--active: parity (added 3× on live, 3× on build)"
+    },
+    {
+      "cls": "class",
+      "name": "open",
+      "state": "parity",
+      "note": "added 1× on live, 1× on build",
+      "line": "motion class open: parity (added 1× on live, 1× on build)"
+    },
+    {
+      "cls": "class",
+      "name": "scrolly",
+      "state": "parity",
+      "note": "added 2× on live, 2× on build",
+      "line": "motion class scrolly: parity (added 2× on live, 2× on build)"
+    },
+    {
+      "cls": "class",
+      "name": "showMenu",
+      "state": "parity",
+      "note": "added 1× on live, 1× on build",
+      "line": "motion class showMenu: parity (added 1× on live, 1× on build)"
+    }
+  ]
+}

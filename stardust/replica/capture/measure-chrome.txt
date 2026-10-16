@@ -1,0 +1,146 @@
+measure  https://wknd.site/us/en.html
+  widths 1440, 360 · 23 selector(s) · 24 props · first match
+
+@ 1440px
+  root  scrollWidth  1440  viewport 1440  scrollHeight   3754
+  footer
+       x     0  y   3494  w  1440  h   260  vis  "MAGAZINE ADVENTURES FAQS ABOUT US FOLLO…"
+      display: block; position: static; boxSizing: border-box; width: 1440px; height: 260.188px; maxWidth: none; margin: 48px 0px 0px; padding: 16px 0px 24px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--footer
+       x   124  y   3510  w  1192  h   220  vis  "MAGAZINE ADVENTURES FAQS ABOUT US FOLLO…"
+      display: block; position: static; boxSizing: content-box; width: 1164px; height: 220.188px; maxWidth: 1164px; margin: 0px 124px; padding: 0px 14px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--footer .cmp-image__image
+       x   152  y   3517  w   128  h    48  vis  ""  img 300×112 …/wknd-logo-light.svg
+      display: inline; position: static; boxSizing: content-box; width: 128px; height: 47.6875px; maxWidth: 128px; margin: 7px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(0, 69, 255); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(0, 69, 255); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer
+       x   332  y   3510  w   582  h    42  vis  "MAGAZINE ADVENTURES FAQS ABOUT US"
+      display: block; position: static; boxSizing: border-box; width: 582px; height: 42px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer .cmp-navigation__item--level-1 [1 of 4]
+       x   346  y   3525  w    95  h    27  vis  "MAGAZINE"
+      display: block; position: static; boxSizing: content-box; width: 95px; height: 27px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer .cmp-navigation__item--level-1 a [1 of 4]
+       x   346  y   3516  w    95  h    48  vis  "MAGAZINE"
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 15px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  #title-c4a301ef30 .cmp-title__text
+       x   928  y   3531  w   166  h    24  vis  "FOLLOW US"
+      display: block; position: static; boxSizing: content-box; width: 166px; height: 24px; maxWidth: none; margin: 21.28px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 16px; fontWeight: 600; lineHeight: 24px; letterSpacing: normal; textTransform: uppercase; textAlign: right; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-buildingblock--btn-list
+       x  1108  y   3510  w   194  h    48  vis  ""
+      display: block; position: static; boxSizing: border-box; width: 194px; height: 48px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #button-ab8126791e
+       x  1108  y   3510  w    48  h    48  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 48px; height: 48px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgb(235, 235, 235); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 14px; fontWeight: 600; lineHeight: 14px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #button-ab8126791e .cmp-button__icon
+       x  1108  y   3510  w    23  h    36  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 9px; height: 17.5px; maxWidth: none; margin: 0px; padding: 18px 0px 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 17.5px; fontWeight: 400; lineHeight: 17.5px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #separator-e99c5de590
+       x   152  y   3596  w  1136  h     0  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 1136px; height: 0px; maxWidth: none; margin: 18px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd
+       x   152  y   3614  w  1136  h   102  vis  "Ⓒ 2019, WKND Site. WKND is a fictitious…"
+      display: block; position: static; boxSizing: content-box; width: 1136px; height: 102px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd p [1 of 3]
+       x   152  y   3614  w  1136  h    15  vis  "Ⓒ 2019, WKND Site."
+      display: block; position: static; boxSizing: content-box; width: 1136px; height: 15px; maxWidth: none; margin: 0px 0px 13.5px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 12px; fontWeight: 400; lineHeight: 15px; letterSpacing: normal; textTransform: none; textAlign: justify; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd a [1 of 5]
+       x   292  y   3658  w    90  h    15  vis  "Core Components"
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 12px; fontWeight: 400; lineHeight: 15px; letterSpacing: normal; textTransform: none; textAlign: justify; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .wkndicon-menu
+       x     0  y      0  w     0  h     0  hid  ""
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(0, 69, 255); fontFamily: wknd-icon-font; fontSize: 20px; fontWeight: 400; lineHeight: 20px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(0, 69, 255); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--header .aem-Grid
+       x   124  y     75  w  1192  h    69  vis  "MAGAZINE ADVENTURES FAQS ABOUT US"
+      display: flex; position: static; boxSizing: content-box; width: 1164px; height: 68.6406px; maxWidth: 1164px; margin: 0px 124px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-image--logo [1 of 2]
+       x   138  y     75  w   194  h    69  vis  ""
+      display: block; position: static; boxSizing: border-box; width: 194px; height: 68.6406px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #languagenavigation-ac5c6a67dc
+       x     0  y      0  w     0  h     0  hid  "United States en-US es-US Canada en-CA …"
+      display: none; position: fixed; boxSizing: content-box; width: 360px; height: auto; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: rgba(0, 0, 0, 0.25) 0px 5px 10px 0px; opacity: 1; objectFit: fill
+  .wknd-sign-in-buttons
+       x   152  y      0  w   942  h    21  vis  "SIGN IN"
+      display: block; position: static; boxSizing: content-box; width: 942px; height: 21px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: none; textAlign: right; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .wknd-sign-in-buttons__button--greeting
+       x     0  y      0  w     0  h     0  hid  "Welcome"
+      display: none; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 0px 14px 0px 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation__item--level-1 .cmp-navigation__item-link [1 of 12]
+       x   875  y     85  w    95  h    48  vis  "MAGAZINE"
+      display: inline-flex; position: static; boxSizing: content-box; width: 61px; height: 48px; maxWidth: none; margin: 0px; padding: 0px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation__item--active > a [1 of 3]
+       x     0  y      0  w     0  h     0  hid  "Home"
+      display: none; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 15px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-button__icon--search
+       x  1240  y     85  w    32  h    36  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 18px; height: 17.5px; maxWidth: none; margin: 0px; padding: 18px 0px 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 17.5px; fontWeight: 400; lineHeight: 17.5px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+
+@ 360px
+  root  scrollWidth   360  viewport 360  scrollHeight   5854
+  footer
+       x     0  y   5260  w   360  h   593  vis  "MAGAZINE ADVENTURES FAQS ABOUT US FOLLO…"
+      display: block; position: static; boxSizing: border-box; width: 360px; height: 593.031px; maxWidth: none; margin: 48px 0px 0px; padding: 16px 0px 24px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--footer
+       x     0  y   5276  w   360  h   553  vis  "MAGAZINE ADVENTURES FAQS ABOUT US FOLLO…"
+      display: block; position: static; boxSizing: content-box; width: 332px; height: 553.031px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--footer .cmp-image__image
+       x    28  y   5283  w    83  h    31  vis  ""  img 300×112 …/wknd-logo-light.svg
+      display: inline; position: static; boxSizing: content-box; width: 82.6562px; height: 30.7969px; maxWidth: 128px; margin: 7px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(0, 69, 255); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(0, 69, 255); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer
+       x   125  y   5276  w   221  h   182  vis  "MAGAZINE ADVENTURES FAQS ABOUT US"
+      display: block; position: static; boxSizing: border-box; width: 221.328px; height: 182px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer .cmp-navigation__item--level-1 [1 of 4]
+       x   139  y   5286  w   193  h    27  vis  "MAGAZINE"
+      display: block; position: static; boxSizing: content-box; width: 193.328px; height: 27px; maxWidth: none; margin: 0px 0px 16px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation--footer .cmp-navigation__item--level-1 a [1 of 4]
+       x   139  y   5277  w    95  h    48  vis  "MAGAZINE"
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 15px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  #title-c4a301ef30 .cmp-title__text
+       x    28  y   5480  w   304  h    24  vis  "FOLLOW US"
+      display: block; position: static; boxSizing: content-box; width: 304px; height: 24px; maxWidth: none; margin: 21.28px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 16px; fontWeight: 600; lineHeight: 24px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-buildingblock--btn-list
+       x    14  y   5525  w   332  h    48  vis  ""
+      display: block; position: static; boxSizing: border-box; width: 332px; height: 48px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #button-ab8126791e
+       x    28  y   5525  w    48  h    48  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 48px; height: 48px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgb(235, 235, 235); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 14px; fontWeight: 600; lineHeight: 14px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #button-ab8126791e .cmp-button__icon
+       x    28  y   5525  w    23  h    36  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 9px; height: 17.5px; maxWidth: none; margin: 0px; padding: 18px 0px 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 17.5px; fontWeight: 400; lineHeight: 17.5px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #separator-e99c5de590
+       x    28  y   5591  w   304  h     0  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 304px; height: 0px; maxWidth: none; margin: 18px 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd
+       x    28  y   5609  w   304  h   207  vis  "Ⓒ 2019, WKND Site. WKND is a fictitious…"
+      display: block; position: static; boxSizing: content-box; width: 304px; height: 207px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd p [1 of 3]
+       x    28  y   5609  w   304  h    15  vis  "Ⓒ 2019, WKND Site."
+      display: block; position: static; boxSizing: content-box; width: 304px; height: 15px; maxWidth: none; margin: 0px 0px 13.5px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 12px; fontWeight: 400; lineHeight: 15px; letterSpacing: normal; textTransform: none; textAlign: justify; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  #text-ef458381cd a [1 of 5]
+       x    28  y   5697  w   304  h    30  vis  "Core Components"
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 12px; fontWeight: 400; lineHeight: 15px; letterSpacing: normal; textTransform: none; textAlign: justify; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .wkndicon-menu
+       x    10  y     40  w    45  h    44  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 29px; height: 28px; maxWidth: none; margin: 0px; padding: 8px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 28px; fontWeight: 400; lineHeight: 28px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-layoutcontainer--header .aem-Grid
+       x     0  y     40  w   388  h    62  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 360px; height: 61.7188px; maxWidth: 1164px; margin: 0px -28px 0px 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-image--logo [1 of 2]
+       x    14  y     40  w   180  h    62  vis  ""
+      display: block; position: static; boxSizing: border-box; width: 180px; height: 61.7188px; maxWidth: none; margin: 0px; padding: 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 18px; fontWeight: 400; lineHeight: 27px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  #languagenavigation-ac5c6a67dc
+       x     0  y      0  w     0  h     0  hid  "United States en-US es-US Canada en-CA …"
+      display: none; position: fixed; boxSizing: content-box; width: 360px; height: auto; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgb(32, 32, 32); backgroundImage: none; color: rgb(235, 235, 235); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(235, 235, 235); boxShadow: rgba(0, 0, 0, 0.25) 0px 5px 10px 0px; opacity: 1; objectFit: fill
+  .wknd-sign-in-buttons
+       x    14  y      0  w   212  h    21  vis  "SIGN IN"
+      display: block; position: static; boxSizing: content-box; width: 212px; height: 21px; maxWidth: none; margin: 0px; padding: 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .wknd-sign-in-buttons__button--greeting
+       x     0  y      0  w     0  h     0  hid  "Welcome"
+      display: none; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 0px 14px 0px 0px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(247, 247, 247); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(247, 247, 247); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation__item--level-1 .cmp-navigation__item-link [1 of 12]
+       x     0  y      0  w     0  h     0  hid  "Magazine"
+      display: inline; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 15px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-navigation__item--active > a [1 of 3]
+       x     0  y      0  w     0  h     0  hid  "Home"
+      display: none; position: static; boxSizing: content-box; width: auto; height: auto; maxWidth: none; margin: 0px; padding: 15px 17px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; fontSize: 14px; fontWeight: 400; lineHeight: 21px; letterSpacing: normal; textTransform: uppercase; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill
+  .cmp-button__icon--search
+       x   312  y     40  w    32  h    36  vis  ""
+      display: block; position: static; boxSizing: content-box; width: 18px; height: 17.5px; maxWidth: none; margin: 0px; padding: 18px 0px 0px 14px; gap: normal; backgroundColor: rgba(0, 0, 0, 0); backgroundImage: none; color: rgb(32, 32, 32); fontFamily: wknd-icon-font; fontSize: 17.5px; fontWeight: 400; lineHeight: 17.5px; letterSpacing: normal; textTransform: none; textAlign: left; borderRadius: 0px; border: 0px none rgb(32, 32, 32); boxShadow: none; opacity: 1; objectFit: fill

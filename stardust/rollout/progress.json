@@ -1,0 +1,80 @@
+{
+  "units": {
+    "foundation": {
+      "status": "done",
+      "kind": "foundation",
+      "templates": [
+        "landing"
+      ],
+      "pages": 0,
+      "blocks": 2,
+      "gates": {
+        "1440": {
+          "headerCrop": "100.00%",
+          "chromeParity": "header 0 style/geometry deltas"
+        },
+        "360": {
+          "headerCrop": "99.86%",
+          "chromeParity": "header 0 style/geometry deltas"
+        },
+        "crop": "header 100.00/99.86 on /drafts/wknd-shell",
+        "chrome": "1 justified delta per root (DA media rename)"
+      },
+      "startedAt": "2026-10-16T13:18:21Z",
+      "endedAt": "2026-10-16T13:48:23Z",
+      "verdict": "foundation: header parity 1440 PASS/360 PASS (logo filename signature only \u2014 DA content hash), footer internal geometry identical (uniform \u0394y on the short shell page), lint pass, pushed 51f8bee, docs nav/footer/shell previewed 200/200/200"
+    },
+    "archetype-landing": {
+      "status": "done",
+      "kind": "archetype",
+      "templates": [
+        "landing"
+      ],
+      "pages": 1,
+      "blocks": 4,
+      "gates": {
+        "1440": {
+          "pixel": 0.25,
+          "dh": 0
+        },
+        "360": {
+          "pixel": 1.73,
+          "dh": -1
+        },
+        "crop": "header 100.00/99.86, footer 100.00/96.91 (99.23 at the 1px rendition offset)",
+        "chrome": "logo media-hash rename only"
+      },
+      "startedAt": "2026-10-16T13:48:23Z",
+      "endedAt": "2026-10-16T14:35:56Z",
+      "verdict": "archetype-landing: page 1/1 previewed, blocks 4, gate 1440 0.25% \u0394h 0 / 360 1.73% \u0394h -1, red 6 (\u2192 0 at C-final), chrome quiet, motion 10/10 + 3/3, requests 5, pushed ad03ee9"
+    },
+    "final": {
+      "status": "done",
+      "kind": "final",
+      "templates": [
+        "landing"
+      ],
+      "pages": 1,
+      "blocks": 0,
+      "gates": {
+        "1440": {
+          "pixel": 0.25,
+          "dh": 0,
+          "red": 0,
+          "gateAll": "PASS"
+        },
+        "360": {
+          "pixel": 1.73,
+          "dh": -1,
+          "red": 0,
+          "gateAll": "PASS"
+        },
+        "crop": "header 100.00/99.86, footer 100.00/96.91 (99.23 aligned)",
+        "chrome": "1 justified delta per root (DA media hash)"
+      },
+      "startedAt": "2026-10-16T14:35:56Z",
+      "endedAt": "2026-10-16T14:35:56Z",
+      "verdict": "final: foundation-freeze check ok, 5 requests applied (4e3fc33), pub3 1440 0.25% \u0394h 0 / 360 1.73% \u0394h -1, 0 red, presence MISSING 0 / HIDDEN 0, clip 0, motion 10/10 + 3/3, gate-all PASS 1440 + 360"
+    }
+  }
+}

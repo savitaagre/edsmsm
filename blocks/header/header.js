@@ -1,247 +1,260 @@
-// media query match that indicates desktop width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * Fetch the nav fragment as plain HTML.
- * Environment-aware: on localhost (`aem up`) the fragment lives under
- * /content/; on DA/EDS production it is served at the site root. Try the
- * likely path FIRST for the current environment so production never logs a
- * 404 for /content/nav.plain.html (and localhost never 404s for /nav...).
+ * WKND header — template-slotted (#95) from the authored /nav document.
+ *
+ * Document contract (one section per role, in order):
+ *   0 account  — greeting <p> (hidden, as on wknd.site), Sign In <p><a>, Sign Out <p><a> (hidden)
+ *   1 language — toggle <p><a>en-US</a></p> + country <ul> (li: title, nested <ul> of locale links)
+ *   2 brand    — <p><a><picture></a></p> (logo)
+ *   3 nav      — <ul><li>Home (hidden)<ul>section links</ul></li></ul>
+ *   4 tools    — search <p><a title="Search">Search</a></p> (icon-only; label kept for a11y)
+ *
+ * Authored nodes are MOVED into the prototype's chrome template (EW1); wrappers carry the
+ * classes (EW2). Behaviour is the live site's, nothing more: body.scrolly at scrollTop > 15,
+ * the language menu (showMenu / open, left = toggle.position().left - 240, any outside click
+ * closes) and the <=1024px slide-in panel (body.navPanel-visible).
+ *
+ * @ew-exempt <ul> mobile-nav — presentational clone of the header nav list (EW4, instrumentation
+ * stripped); the header nav list is the editable original
  */
-async function loadNavFragment() {
-  const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  const paths = isLocal
-    ? ['/content/nav.plain.html', '/nav.plain.html']
-    : ['/nav.plain.html', '/content/nav.plain.html'];
-  let resp = await fetch(paths[0]);
-  if (!resp.ok) resp = await fetch(paths[1]);
-  if (!resp.ok) return null;
-  const html = await resp.text();
-  const container = document.createElement('div');
-  container.innerHTML = html;
-  return container;
+
+const DESKTOP = window.matchMedia('(min-width: 1025px)');
+const SCROLLY_AT = 15; // live clientlib-site: body.scrolly while scrollTop > 15
+const MENU_OFFSET = 240; // live clientlib-site: left = toggle.position().left - 240
+
+function div(className, ...children) {
+  const el = document.createElement('div');
+  el.className = className;
+  el.append(...children.filter(Boolean));
+  return el;
 }
 
-function closeMenu(nav) {
-  nav.setAttribute('aria-expanded', 'false');
-  document.body.style.overflowY = '';
-  const button = nav.querySelector('.nav-hamburger button');
-  if (button) button.setAttribute('aria-label', 'Open navigation');
+/** The authored elements of one /nav section, in order. */
+function sectionNodes(fragment, index) {
+  const section = fragment.querySelectorAll(':scope > .section')[index];
+  if (!section) return [];
+  return [...section.querySelectorAll(':scope > .default-content-wrapper > *')];
 }
-
-function toggleMenu(nav, forceExpanded = null) {
-  const expanded = forceExpanded !== null
-    ? !forceExpanded
-    : nav.getAttribute('aria-expanded') === 'true';
-  document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
-  nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  const button = nav.querySelector('.nav-hamburger button');
-  if (button) button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
-}
-
-// Locales grouped by country, mirroring wknd.site's language-navigation: a dark
-// panel of country groups, each with a flag, a country heading and that
-// country's locales as real links. `code` keys the flag (see header.css
-// .nav-locale-group[data-country]).
-const LOCALE_GROUPS = [
-  { country: 'United States', code: 'us', locales: [['en-US', '/us/en'], ['es-US', '/us/es']] },
-  { country: 'Canada', code: 'ca', locales: [['en-CA', '/ca/en'], ['fr-CA', '/ca/fr']] },
-  { country: 'Switzerland', code: 'ch', locales: [['de-CH', '/ch/de'], ['fr-CH', '/ch/fr'], ['it-CH', '/ch/it']] },
-  { country: 'Germany', code: 'de', locales: [['de-DE', '/de/de']] },
-  { country: 'France', code: 'fr', locales: [['fr-FR', '/fr/fr']] },
-  { country: 'Spain', code: 'es', locales: [['es-ES', '/es/es']] },
-  { country: 'Italy', code: 'it', locales: [['it-IT', '/it/it']] },
-];
 
 /**
- * Turn the authored "en-US" link into a real locale switcher matching wknd's
- * language navigation: a toggle that opens a dark panel of country groups, each
- * listing that country's locales as real links. The source "en-US" was static
- * text with no interaction.
- * @param {HTMLElement} nav the decorated <nav>
+ * decorateButtons() (bare-links-too) buttonized the chrome's solo-link paragraphs while the
+ * fragment was decorated; chrome links are not CTAs — undo it (classes + the derived title).
  */
-function buildLocaleSwitcher(nav) {
-  const link = [...nav.querySelectorAll('.nav-tools a[href]')]
-    .find((a) => /langnavtoggle/i.test(a.getAttribute('href') || '') || /^[a-z]{2}-[a-z]{2}$/i.test(a.textContent.trim()));
-  if (!link) return;
+function unbutton(root) {
+  root.querySelectorAll('p.button-wrapper').forEach((p) => {
+    p.classList.remove('button-wrapper');
+    if (!p.classList.length) p.removeAttribute('class');
+  });
+  root.querySelectorAll('a.button').forEach((a) => {
+    a.classList.remove('button', 'primary', 'secondary', 'accent');
+    if (!a.classList.length) a.removeAttribute('class');
+    if (a.title === a.textContent) a.removeAttribute('title');
+  });
+}
 
-  const current = link.textContent.trim() || 'en-US';
-  const wrapper = document.createElement('div');
-  wrapper.className = 'nav-locale';
+/** Delivered lists wrap a nested item's own link in a <p> (#98): unwrap it. */
+function unwrapListParagraphs(list) {
+  list.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes));
+}
 
-  const toggle = document.createElement('button');
-  toggle.type = 'button';
-  toggle.className = 'nav-locale-toggle';
-  toggle.setAttribute('aria-haspopup', 'true');
+/** The media pipeline offers a webp rendition of SVG logos; keep the vector. */
+function keepVector(root) {
+  root.querySelectorAll('picture').forEach((picture) => {
+    const img = picture.querySelector('img');
+    if (img && /\.svg(\?|$)/.test(img.getAttribute('src') || '')) {
+      picture.querySelectorAll('source:not([type="image/svg+xml"])').forEach((s) => s.remove());
+    }
+  });
+}
+
+/** EW4: a presentational clone must not carry the workspace's editor indices or ids. */
+function stripInstrumentation(root) {
+  [root, ...root.querySelectorAll('*')].forEach((node) => {
+    [...node.attributes]
+      .filter((attr) => /^data-(prose|image|block)-index$/.test(attr.name) || attr.name === 'id')
+      .forEach((attr) => node.removeAttribute(attr.name));
+  });
+}
+
+const flagUrl = (country) => `url("${window.hlx?.codeBasePath || ''}/icons/flags/${country}.svg")`;
+const countryOf = (locale) => (/^[a-z]{2}-([a-z]{2})$/i.exec(locale.trim()) || [])[1]?.toUpperCase();
+
+function buildAccount(nodes) {
+  const greeting = nodes.find((n) => !n.querySelector('a'));
+  const [signIn, signOut, ...rest] = nodes.filter((n) => n.querySelector('a'));
+  return div(
+    'utility-bar-sign-in',
+    greeting && div('sign-in-greeting', greeting),
+    signIn && div('sign-in-link', signIn),
+    signOut && div('sign-out-link', signOut),
+    ...rest,
+  );
+}
+
+function buildLanguage(nodes) {
+  const toggleP = nodes.find((n) => n.tagName === 'P' && n.querySelector('a'));
+  const list = nodes.find((n) => n.tagName === 'UL');
+  const wrap = div('utility-bar-lang');
+  if (!toggleP) return wrap;
+
+  const toggle = toggleP.querySelector('a');
+  const current = toggle.textContent.trim();
+  const toggleWrap = div('lang-toggle', toggleP);
+  const cc = countryOf(current);
+  if (cc) toggleWrap.style.setProperty('--lang-flag', flagUrl(cc));
+  toggle.id = 'langNavToggleHeader';
+  toggle.setAttribute('aria-label', `Toggle Language ${current}`);
   toggle.setAttribute('aria-expanded', 'false');
-  toggle.textContent = current;
+  toggle.setAttribute('aria-controls', 'lang-menu');
+  wrap.append(toggleWrap);
 
-  // dark panel: one <ul> of country groups, each group a heading + locale links
-  const panel = document.createElement('ul');
-  panel.className = 'nav-locale-list';
-  panel.hidden = true;
-  LOCALE_GROUPS.forEach((group) => {
-    const groupLi = document.createElement('li');
-    groupLi.className = 'nav-locale-group';
-    groupLi.dataset.country = group.code;
-
-    const heading = document.createElement('span');
-    heading.className = 'nav-locale-country';
-    heading.textContent = group.country;
-    groupLi.append(heading);
-
-    const localeList = document.createElement('ul');
-    group.locales.forEach(([label, path]) => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = path;
-      a.textContent = label;
-      if (label === current) a.setAttribute('aria-current', 'true');
-      li.append(a);
-      localeList.append(li);
+  if (!list) return wrap;
+  const menu = document.createElement('nav');
+  menu.className = 'lang-menu';
+  menu.id = 'lang-menu';
+  [...list.children].forEach((country) => {
+    // country title: an authored <p> (delivered) or a bare text node — wrap, never copy
+    const title = div('lang-menu-title');
+    [...country.childNodes]
+      .filter((n) => n.nodeName !== 'UL' && (n.nodeType === 1 || n.textContent.trim()))
+      .forEach((n) => title.append(n));
+    country.prepend(title);
+    const links = [...country.querySelectorAll('a')];
+    const code = links.map((a) => countryOf(a.textContent)).find(Boolean);
+    if (code) country.style.setProperty('--flag', flagUrl(code));
+    links.forEach((a) => {
+      const locale = a.textContent.trim();
+      if (countryOf(locale)) {
+        a.hreflang = locale;
+        a.lang = locale;
+        a.rel = 'alternate';
+      }
+      if (locale === current) a.setAttribute('aria-current', 'true');
     });
-    groupLi.append(localeList);
-    panel.append(groupLi);
   });
+  menu.append(list);
+  wrap.append(menu);
 
-  const close = () => { toggle.setAttribute('aria-expanded', 'false'); panel.hidden = true; };
   toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
-    panel.hidden = open;
+    e.preventDefault();
+    // jQuery .position(): the fractional box relative to the offsetParent
+    const parent = toggle.offsetParent || document.body;
+    const left = toggle.getBoundingClientRect().left - parent.getBoundingClientRect().left;
+    menu.style.left = `${left - MENU_OFFSET}px`;
+    menu.classList.toggle('showMenu');
+    toggle.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', toggle.classList.contains('open') ? 'true' : 'false');
   });
-  document.addEventListener('click', (e) => { if (!wrapper.contains(e.target)) close(); });
-  window.addEventListener('keydown', (e) => { if (e.code === 'Escape') close(); });
+  window.addEventListener('click', (e) => {
+    if (e.target !== toggle && toggle.classList.contains('open')) {
+      menu.classList.remove('showMenu');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  return wrap;
+}
 
-  wrapper.append(toggle, panel);
-  link.replaceWith(wrapper);
+function buildSearch(nodes) {
+  const wrap = div('header-search', ...nodes);
+  const link = wrap.querySelector('a');
+  if (link) {
+    const label = link.textContent.trim();
+    link.setAttribute('aria-label', label);
+    link.title = link.title || label;
+    // icon-only control: the authored label moves into a hidden span (EW1: moved, not copied)
+    const span = document.createElement('span');
+    span.className = 'header-search-label';
+    span.append(...link.childNodes);
+    // the glyph sits in an empty inline span, as on the source (.cmp-button__icon--search)
+    const icon = document.createElement('span');
+    icon.className = 'header-search-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    link.append(icon, span);
+  }
+  return wrap;
+}
+
+function buildMobile(navList) {
+  const toggle = div('mobile-toggle');
+  toggle.id = 'toggleNav';
+  const link = document.createElement('a');
+  link.className = 'mobile-toggle-link';
+  link.href = '#mobileNav';
+  link.setAttribute('aria-label', 'Open hidden mobile navigation');
+  link.setAttribute('aria-expanded', 'false');
+  const icon = document.createElement('span');
+  icon.className = 'mobile-toggle-icon';
+  icon.setAttribute('aria-hidden', 'true');
+  link.append(icon);
+  toggle.append(link);
+
+  const panel = document.createElement('nav');
+  panel.className = 'mobile-nav';
+  panel.id = 'mobileNav';
+  if (navList) {
+    const clone = navList.cloneNode(true);
+    stripInstrumentation(clone);
+    panel.append(clone);
+  }
+
+  const setOpen = (open) => {
+    document.body.classList.toggle('navPanel-visible', open);
+    link.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    setOpen(!document.body.classList.contains('navPanel-visible'));
+  });
+  DESKTOP.addEventListener('change', () => setOpen(false));
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape' && document.body.classList.contains('navPanel-visible')) setOpen(false);
+  });
+  return [toggle, panel];
 }
 
 /**
- * Build the search form (form controls are created in JS, never in the fragment).
- * @returns {HTMLElement} the search form element
- */
-function buildSearch() {
-  const form = document.createElement('form');
-  form.className = 'nav-search';
-  form.setAttribute('role', 'search');
-  form.action = '/us/en/search';
-  form.innerHTML = `
-    <label class="nav-search-label" for="nav-search-input">Search</label>
-    <input id="nav-search-input" name="q" type="search" placeholder="SEARCH" autocomplete="off" />
-    <button type="submit" class="nav-search-submit" aria-label="Submit search"></button>`;
-  return form;
-}
-
-/**
- * loads and decorates the header nav
+ * loads and decorates the header
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  const fragment = await loadNavFragment();
-  block.textContent = '';
+  const navMeta = getMetadata('nav');
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const fragment = await loadFragment(navPath);
   if (!fragment) return;
+  unbutton(fragment);
+  keepVector(fragment);
 
+  const navList = sectionNodes(fragment, 3).find((n) => n.tagName === 'UL');
+  if (navList) unwrapListParagraphs(navList);
   const nav = document.createElement('nav');
-  nav.id = 'nav';
-  while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
+  nav.className = 'header-nav';
+  nav.setAttribute('aria-label', 'Main navigation');
+  nav.append(...sectionNodes(fragment, 3));
 
-  // Resolve relative image paths (authored relative in nav.plain.html) against
-  // the content root so they work regardless of the host page's URL depth.
-  nav.querySelectorAll('img[src]').forEach((img) => {
-    const src = img.getAttribute('src');
-    if (src && !/^(https?:)?\/\//.test(src) && !src.startsWith('/')) {
-      img.src = `/${src.replace(/^\.?\//, '')}`;
-    }
-  });
+  const site = div(
+    'site-header',
+    div('utility-bar', div(
+      'utility-bar-inner',
+      buildAccount(sectionNodes(fragment, 0)),
+      buildLanguage(sectionNodes(fragment, 1)),
+    )),
+    div('header-bar', div(
+      'header-bar-inner',
+      div('header-bar-logo', ...sectionNodes(fragment, 2)),
+      nav,
+      buildSearch(sectionNodes(fragment, 4)),
+    )),
+  );
 
-  // section roles: brand (logo), sections (primary nav), tools (locale + sign-in)
-  const classes = ['brand', 'sections', 'tools'];
-  classes.forEach((c, i) => {
-    const section = nav.children[i];
-    if (section) section.classList.add(`nav-${c}`);
-  });
+  block.replaceChildren(site, ...buildMobile(navList));
 
-  // brand: strip any button decoration EDS may have applied to the logo link
-  const navBrand = nav.querySelector('.nav-brand');
-  if (navBrand) {
-    const brandLink = navBrand.querySelector('a.button');
-    if (brandLink) {
-      brandLink.className = '';
-      const container = brandLink.closest('.button-container');
-      if (container) container.className = '';
-    }
-  }
-
-  // primary nav: expose the top-level list as .nav-list (flat list of links)
-  const navSections = nav.querySelector('.nav-sections');
-  if (navSections) {
-    const topList = navSections.querySelector(':scope > ul');
-    if (topList) topList.classList.add('nav-list');
-
-    // active-page highlight: mark the nav link whose section matches the current
-    // path (wknd highlights the current section's link with a yellow block).
-    // Compare on the first path segment after /us/en so e.g.
-    // /us/en/adventures/bali-surf-camp still highlights "Adventures".
-    const here = window.location.pathname.replace(/\.html?$/, '').replace(/\/$/, '');
-    const sectionOf = (p) => {
-      const m = p.match(/^\/us\/en\/([^/]+)/);
-      return m ? m[1] : '';
-    };
-    const currentSection = sectionOf(here);
-    navSections.querySelectorAll('a[href]').forEach((a) => {
-      let dest;
-      try { dest = new URL(a.href, window.location.origin).pathname; } catch { return; }
-      dest = dest.replace(/\.html?$/, '').replace(/\/$/, '');
-      if (dest === here || (currentSection && sectionOf(dest) === currentSection)) {
-        a.setAttribute('aria-current', 'page');
-        a.closest('li')?.classList.add('nav-active');
-      }
-    });
-
-    // search box lives in the nav row (right of the primary links), matching source
-    navSections.append(buildSearch());
-  }
-
-  // locale switcher: turn the static "en-US" link into a real dropdown
-  buildLocaleSwitcher(nav);
-
-  // hamburger for mobile
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav));
-  nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
-
-  // reset menu state when crossing the desktop/mobile breakpoint
-  isDesktop.addEventListener('change', () => closeMenu(nav));
-
-  // collapse mobile menu on escape
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'Escape' && !isDesktop.matches) closeMenu(nav);
-  });
-
-  const navWrapper = document.createElement('div');
-  navWrapper.className = 'nav-wrapper';
-  navWrapper.append(nav);
-  block.append(navWrapper);
-
-  // Scroll-triggered shrink (desktop): wknd's header compacts after scrolling
-  // down (~194px → ~114px). Add .nav-scrolled past a threshold; CSS handles the
-  // size transition. rAF-throttled so scrolling stays smooth.
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      navWrapper.classList.toggle('nav-scrolled', window.scrollY > 100);
-      ticking = false;
-    });
+  // header scroll morph (live: body.scrolly while scrollTop > 15)
+  const updateScrolly = () => {
+    document.body.classList.toggle('scrolly', window.scrollY > SCROLLY_AT);
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  updateScrolly();
+  document.addEventListener('scroll', updateScrolly, { passive: true });
 }

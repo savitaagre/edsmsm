@@ -109,7 +109,15 @@ function buildAutoBlocks(main) {
  */
 function decorateButtons(main) {
   main.querySelectorAll('p a[href]').forEach((a) => {
-    a.title = a.title || a.textContent;
+    // DA has no aria-label field: an authored link title that differs from the
+    // link text is the source's accessible name (e.g. "read our articles").
+    const authoredTitle = a.getAttribute('title');
+    if (authoredTitle && authoredTitle !== a.textContent.trim()) {
+      a.setAttribute('aria-label', authoredTitle);
+      a.removeAttribute('title');
+    } else {
+      a.title = a.title || a.textContent;
+    }
     const p = a.closest('p');
     const text = a.textContent.trim();
 
@@ -152,29 +160,6 @@ function decorateButtons(main) {
 }
 
 /**
- * The homepage's currently-live authored content is missing a section break
- * between "Recent Articles" and "Next Adventures" (both ended up in one
- * div), so they render as a single section — no gap, and the Featured
- * Article's grey band visually runs into "Recent Articles". The import
- * transformer now places new imports correctly, but existing content needs
- * a reimport to pick that up; split client-side in the meantime so it
- * renders correctly regardless. Harmless no-op once the content is fixed at
- * the source (the heading won't be found where this expects it).
- * @param {Element} main The main element
- */
-function splitHomepageSections(main) {
-  if (window.location.pathname !== '/us/en') return;
-  const heading = [...main.querySelectorAll(':scope > div > h2')]
-    .find((h) => h.textContent.trim() === 'Next Adventures');
-  if (!heading) return;
-  const parent = heading.parentElement;
-  const siblings = [...parent.children];
-  const newSection = document.createElement('div');
-  siblings.slice(siblings.indexOf(heading)).forEach((el) => newSection.append(el));
-  parent.after(newSection);
-}
-
-/**
  * Apply section-metadata to its section, then remove the metadata block.
  *
  * The vendored scripts/aem.js in this project does NOT process
@@ -212,12 +197,24 @@ function applySectionMetadata(main) {
 }
 
 /**
+ * The delivery pipeline emits an authored image `title` as `data-title`;
+ * restore the attribute so images carry their authored title (source parity).
+ * @param {Element} main The main element
+ */
+function restoreImageTitles(main) {
+  main.querySelectorAll('img[data-title]').forEach((img) => {
+    if (!img.title) img.title = img.dataset.title;
+    img.removeAttribute('data-title');
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
-  splitHomepageSections(main);
+  restoreImageTitles(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

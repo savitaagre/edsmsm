@@ -1,0 +1,111 @@
+/* featured-teaser — values lifted verbatim from the gated replica prototype
+   (stardust/prototypes/us-en-html.css: .featured-teaser). */
+
+/* the source column is flow-root: the 18px bottom margin stays inside it
+   instead of collapsing into the next title's 27px */
+main .featured-teaser-wrapper {
+  display: flow-root;
+}
+
+.featured-teaser {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.featured-teaser .image {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.featured-teaser .frame {
+  width: 100%;
+  height: 100%;
+}
+
+/* the source image is INLINE */
+.featured-teaser .image img {
+  display: inline;
+  vertical-align: baseline;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  object-position: top;
+}
+
+.featured-teaser .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 63px 36px 36px;
+  background-color: var(--surface-grey);
+}
+
+.featured-teaser .pretitle p {
+  margin: 0 0 13.5px;
+  font-weight: 700;
+}
+
+.featured-teaser .title :is(h1, h2, h3, h4, h5, h6) {
+  margin: 18px 0;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+.featured-teaser .description {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.75;
+}
+
+.featured-teaser .description :is(p, ul, ol) {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.75;
+  text-align: left;
+}
+
+.featured-teaser .actions {
+  display: flow-root;
+  margin: 18px 0;
+}
+
+.featured-teaser .actions p {
+  display: flow-root;
+  margin: 0;
+}
+
+/* teaser CTA (source .cmp-teaser__action-link): 1em 2.5em, 49px tall — not the 48px primary */
+.featured-teaser .actions a:any-link {
+  float: left;
+  display: block;
+  height: auto;
+  padding: 1em 2.5em;
+  background-color: var(--brand-yellow);
+  border-radius: 0;
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+@media (width <= 767px) {
+  .featured-teaser {
+    flex-direction: column;
+  }
+
+  .featured-teaser .image {
+    flex: 1;
+  }
+
+  .featured-teaser .content {
+    flex: 1;
+    margin-top: -18px;
+  }
+}

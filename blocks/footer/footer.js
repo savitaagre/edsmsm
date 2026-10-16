@@ -1,25 +1,69 @@
-// eslint-disable-next-line import/no-unresolved
-import { networkFromLabel } from '../../scripts/social-icons.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * Fetch the footer fragment as plain HTML.
- * Environment-aware: on localhost (`aem up`) the fragment lives under
- * /content/; on DA/EDS production it is served at the site root. Try the
- * likely path FIRST for the current environment so production never logs a
- * 404 for /content/footer.plain.html (and localhost never 404s for /footer...).
+ * WKND footer — template-slotted (#95) from the authored /footer document.
+ *
+ * Document contract (one section per role, in order):
+ *   0 brand  — <p><a><picture></a></p> (light logo)
+ *   1 nav    — <ul><li>Home (hidden)<ul>section links</ul></li></ul>
+ *   2 social — <h4>Follow Us</h4> + <ul> of icon-only links (title = accessible name)
+ *   3 legal  — the copyright / disclaimer paragraphs
+ *
+ * Authored nodes are MOVED into the prototype's footer template (EW1); wrappers carry the
+ * classes (EW2). Anything authored beyond the contract lands in the legal slot (leftovers).
  */
-async function loadFooterFragment() {
-  const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  const paths = isLocal
-    ? ['/content/footer.plain.html', '/footer.plain.html']
-    : ['/footer.plain.html', '/content/footer.plain.html'];
-  let resp = await fetch(paths[0]);
-  if (!resp.ok) resp = await fetch(paths[1]);
-  if (!resp.ok) return null;
-  const html = await resp.text();
-  const container = document.createElement('div');
-  container.innerHTML = html;
-  return container;
+
+function div(className, ...children) {
+  const el = document.createElement('div');
+  el.className = className;
+  el.append(...children.filter(Boolean));
+  return el;
+}
+
+function sectionNodes(fragment, index) {
+  const section = fragment.querySelectorAll(':scope > .section')[index];
+  if (!section) return [];
+  return [...section.querySelectorAll(':scope > .default-content-wrapper > *')];
+}
+
+/** decorateButtons() (bare-links-too) also ran on the fragment; footer links are not CTAs. */
+function unbutton(root) {
+  root.querySelectorAll('p.button-wrapper').forEach((p) => {
+    p.classList.remove('button-wrapper');
+    if (!p.classList.length) p.removeAttribute('class');
+  });
+  root.querySelectorAll('a.button').forEach((a) => {
+    a.classList.remove('button', 'primary', 'secondary', 'accent');
+    if (!a.classList.length) a.removeAttribute('class');
+    if (a.title === a.textContent) a.removeAttribute('title');
+  });
+}
+
+function keepVector(root) {
+  root.querySelectorAll('picture').forEach((picture) => {
+    const img = picture.querySelector('img');
+    if (img && /\.svg(\?|$)/.test(img.getAttribute('src') || '')) {
+      picture.querySelectorAll('source:not([type="image/svg+xml"])').forEach((s) => s.remove());
+    }
+  });
+}
+
+/** Icon-only social buttons: the authored title becomes the accessible name, the label hides. */
+function decorateSocial(list) {
+  list.querySelectorAll('a').forEach((a) => {
+    a.setAttribute('aria-label', a.title || a.textContent.trim());
+    a.removeAttribute('title');
+    const span = document.createElement('span');
+    span.className = 'social-btn-text';
+    span.append(...a.childNodes); // moved, not copied (EW1)
+    // the glyph sits in an empty inline span, as on the source (.cmp-button__icon)
+    const network = ['facebook', 'twitter', 'instagram'].find((n) => a.href.toLowerCase().includes(n));
+    const icon = document.createElement('span');
+    icon.className = network ? `social-icon social-icon-${network}` : 'social-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    a.append(icon, span);
+  });
 }
 
 /**
@@ -27,53 +71,37 @@ async function loadFooterFragment() {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const fragment = await loadFooterFragment();
-  block.textContent = '';
+  const footerMeta = getMetadata('footer');
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const fragment = await loadFragment(footerPath);
   if (!fragment) return;
+  unbutton(fragment);
+  keepVector(fragment);
 
-  const footer = document.createElement('div');
-  footer.className = 'footer-content';
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  const navNodes = sectionNodes(fragment, 1);
+  navNodes.forEach((n) => n.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes)));
+  const nav = document.createElement('nav');
+  nav.className = 'site-footer-nav';
+  nav.setAttribute('aria-label', 'Footer navigation');
+  nav.append(...navNodes);
 
-  // Resolve relative image paths (authored relative in footer.plain.html)
-  // against the content root so they work regardless of the page's URL depth.
-  footer.querySelectorAll('img[src]').forEach((img) => {
-    const src = img.getAttribute('src');
-    if (src && !/^(https?:)?\/\//.test(src) && !src.startsWith('/')) {
-      img.src = `/${src.replace(/^\.?\//, '')}`;
-    }
-  });
+  const socialNodes = sectionNodes(fragment, 2);
+  const follow = socialNodes.filter((n) => /^H[1-6]$/.test(n.tagName));
+  const social = socialNodes.filter((n) => !follow.includes(n));
+  social.forEach(decorateSocial);
 
-  // Label the four footer sections for styling: brand, nav, social, legal
-  const sections = [...footer.children];
-  const names = ['brand', 'nav', 'social', 'legal'];
-  sections.forEach((section, i) => {
-    if (names[i]) section.classList.add(`footer-${names[i]}`);
-  });
+  const legal = [3, 4, 5, 6].flatMap((i) => sectionNodes(fragment, i));
 
-  // Tag each social link with a network class from its label so the icon CSS
-  // doesn't depend on the href (authored links are "/" placeholders) or on
-  // list order. e.g. "Facebook" -> .footer-social-facebook. The label→network
-  // derivation is shared with the magazine social-links block (scripts/social-icons.js).
-  const socialSection = footer.querySelector('.footer-social');
-  if (socialSection) {
-    // "Follow Us" is a label for the social links, not part of the page's
-    // document outline. Authored as a heading in the fragment, it breaks
-    // heading-order on every page (the footer level can't be right for every
-    // template's main content). Demote it to a styled <p> so the footer never
-    // contributes a heading to the outline.
-    socialSection.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
-      const p = document.createElement('p');
-      p.className = 'footer-social-label';
-      p.innerHTML = h.innerHTML;
-      h.replaceWith(p);
-    });
-
-    socialSection.querySelectorAll('a').forEach((a) => {
-      const network = networkFromLabel(a.textContent);
-      if (network) a.classList.add(`footer-social-${network}`);
-    });
-  }
-
-  block.append(footer);
+  block.replaceChildren(div(
+    'site-footer-inner',
+    div(
+      'site-footer-row',
+      div('site-footer-logo', ...sectionNodes(fragment, 0)),
+      nav,
+      div('site-footer-follow', ...follow),
+      div('site-footer-social', ...social),
+    ),
+    div('site-footer-separator'),
+    div('site-footer-text', ...legal),
+  ));
 }

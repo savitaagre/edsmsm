@@ -1,0 +1,12 @@
+{
+  "_provenance": { "writtenBy": "stardust:deploy (via replica Phase 5)", "writtenAt": "2026-10-16T13:17:00Z", "readArtifacts": ["scripts/scripts.js", "scripts/aem.js", "styles/styles.css"] },
+  "runtime": "vanilla-eds",
+  "blockWrapperClass": "block",
+  "buttonClasses": ".button / .button.primary / .button.secondary / .button.accent, in p.button-wrapper",
+  "buttonization": "bare-links-too",
+  "buttonizationNotes": "decorateButtons() buttonizes any <p> whose only content is one link (no <strong>/<em> needed); strong → primary, em → secondary, both → accent; breadcrumb and image links are skipped; a.title defaults to the link text",
+  "sectionMetadata": "project-owned processSectionMetadata(): style rows → classes on the section, metadata block removed, empty wrappers dropped (after decorateSections, before decorateBlocks)",
+  "fragmentScriptPolicy": "inert-innerHTML",
+  "emptySectionCollapse": true,
+  "structuralCss": "body{display:none} / body.appear; header{height:var(--nav-height)} + header .header visibility until [data-block-status=loaded]; main > .section scaffold — present in styles/styles.css"
+}

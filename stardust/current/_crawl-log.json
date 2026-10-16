@@ -1,0 +1,159 @@
+{
+  "discovery": {
+    "fetchTechnique": "headless",
+    "count": 1,
+    "concurrency": 4
+  },
+  "consent": {
+    "method": "auto"
+  },
+  "favicon": {
+    "url": "https://wknd.site/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/images/favicons/favicon-32.png",
+    "file": "assets/favicon.png"
+  },
+  "crawl": {
+    "failures": []
+  },
+  "captureGaps": {
+    "roots": [],
+    "detail": "uncaptured first-level targets: none (no locale root captured)"
+  },
+  "dynamicSurface": {
+    "pages": 1,
+    "pagesWithSameSiteData": 1,
+    "pagesWithSearchForm": 0,
+    "pagesHydrated": 1,
+    "truncatedPages": 0,
+    "endpoints": [
+      {
+        "method": "GET",
+        "host": "wknd.site",
+        "path": "/content/wknd/us/en/_jcr_content/contexthub.pagedata.json",
+        "query": [],
+        "resourceType": "xhr",
+        "contentType": "application/json",
+        "sameSite": true,
+        "example": "https://wknd.site/content/wknd/us/en/_jcr_content/contexthub.pagedata.json",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      },
+      {
+        "method": "GET",
+        "host": "wknd.site",
+        "path": "/conf/wknd/settings/wcm/segments.seg.js",
+        "query": [],
+        "resourceType": "xhr",
+        "contentType": "text/javascript",
+        "sameSite": true,
+        "example": "https://wknd.site/conf/wknd/settings/wcm/segments.seg.js",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      },
+      {
+        "method": "GET",
+        "host": "dpm.demdex.net",
+        "path": "/id",
+        "query": [
+          "d_fieldgroup",
+          "d_nsid",
+          "d_orgid",
+          "d_rtbd",
+          "d_ver",
+          "d_visid_ver",
+          "ts"
+        ],
+        "resourceType": "xhr",
+        "contentType": "application/json",
+        "sameSite": false,
+        "example": "https://dpm.demdex.net/id",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      },
+      {
+        "method": "GET",
+        "host": "wknd.site",
+        "path": "/libs/granite/csrf/token.json",
+        "query": [],
+        "resourceType": "xhr",
+        "contentType": "application/json",
+        "sameSite": true,
+        "example": "https://wknd.site/libs/granite/csrf/token.json",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      },
+      {
+        "method": "GET",
+        "host": "wknd.site",
+        "path": "/home/users/o/oa6PkCC2rneOdh2ni0qG.infinity.json",
+        "query": [],
+        "resourceType": "xhr",
+        "contentType": "application/json",
+        "sameSite": true,
+        "example": "https://wknd.site/home/users/o/oa6PkCC2rneOdh2ni0qG.infinity.json",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      },
+      {
+        "method": "GET",
+        "host": "wknd.site",
+        "path": "/libs/granite/security/currentuser.json",
+        "query": [
+          "nocache"
+        ],
+        "resourceType": "xhr",
+        "contentType": "application/json",
+        "sameSite": true,
+        "example": "https://wknd.site/libs/granite/security/currentuser.json",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      }
+    ],
+    "thirdPartyScriptHosts": [
+      {
+        "host": "assets.adobedtm.com",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      }
+    ],
+    "frameworkHints": [
+      {
+        "hint": "aem-sites",
+        "pages": 1,
+        "examples": [
+          "us-en-html"
+        ]
+      }
+    ],
+    "globalState": [],
+    "formTargets": []
+  },
+  "visionCheck": [
+    {
+      "slug": "us-en-html",
+      "verdict": "ok",
+      "notes": "thumbnail (2 slices) shows header, 3-slide hero carousel (slide 1 visible), featured teaser, Recent Articles 4-up, Next Adventures full-bleed teaser, Where do you want to go 4-up + All Trips, dark footer; logo captured; no consent wall. Hidden carousel slides 2-3 filtered from page JSON body by the visibility filter — present in pages/us-en-html.html."
+    }
+  ],
+  "siblingCandidates": [],
+  "siblingDiscoveryNote": "Language switcher targets (en-CA, fr-CA, de-CH, ...) are same-origin paths, not sibling origins; footer external links point to Adobe docs/GitHub/Adobe Stock (not same-brand). No candidates.",
+  "assetHarvest": {
+    "technique": "curl with browser UA (assets not bot-gated)",
+    "media": "assets/media/_index.tsv",
+    "fonts": "Google Fonts css2 latin subsets + wknd-icon-font.ttf",
+    "css": "stardust/replica/capture/css/"
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:extract",
+    "writtenAt": "2026-10-16T12:28:00Z",
+    "readArtifacts": [
+      "stardust/current/_computed-styles.json",
+      "stardust/current/_brand-extraction.json",
+      "stardust/replica/capture/css/clientlib-site.lc-edab4768979fadcb02662ded9e221c99-lc.min.css"
+    ],
+    "scope": "single page (--single)",
+    "mode": "descriptive"
+  },
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T12:28:00Z",
+  "title": "Design System: WKND (current state)",
+  "extensions": {
+    "colorMeta": {
+      "brand-yellow": {
+        "role": "primary",
+        "displayName": "WKND Yellow"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "surface-grey": {
+        "role": "surface",
+        "displayName": "Panel Grey"
+      },
+      "link-blue": {
+        "role": "accent",
+        "displayName": "Link Blue"
+      }
+    },
+    "typographyMeta": {
+      "h2": {
+        "displayName": "Section / teaser headline",
+        "purpose": "Asar serif; hero, featured and section titles."
+      },
+      "paragraph": {
+        "displayName": "Running text",
+        "purpose": "Body paragraphs: justified, line-height 2.5."
+      },
+      "label": {
+        "displayName": "Button / card title",
+        "purpose": "Uppercase 600 sans."
+      }
+    },
+    "shadows": [
+      {
+        "name": "inset-edge",
+        "value": "rgba(0, 0, 0, 0.35) -3px 0px 5px 0px inset",
+        "purpose": "single measured occurrence"
+      }
+    ],
+    "motion": [],
+    "breakpoints": {
+      "source": [
+        {
+          "name": "mobile-max",
+          "value": "767px"
+        },
+        {
+          "name": "tablet-max",
+          "value": "1024px"
+        },
+        {
+          "name": "desktop-min",
+          "value": "1025px"
+        },
+        {
+          "name": "wide-max",
+          "value": "1200px"
+        }
+      ],
+      "containerMaxWidth": "1680px",
+      "probeWidth": 2560,
+      "shellMaxWidth": "1680px",
+      "caps": [
+        {
+          "kind": "shell",
+          "px": 1680,
+          "via": "max-width",
+          "selector": "body.page.basicpage > div.root.container",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        },
+        {
+          "kind": "module",
+          "px": 1192,
+          "via": "fixed",
+          "selector": "div.cmp-carousel__item.cmp-carousel__item--active > div.teaser.cmp-teaser--hero > div.cmp-teaser > div.cmp-teaser__content",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        },
+        {
+          "kind": "module",
+          "px": 1164,
+          "via": "max-width",
+          "selector": "#container-0e03d6e9bb > div.aem-Grid.aem-Grid--12 > main.container.responsivegrid",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        },
+        {
+          "kind": "module",
+          "px": 709,
+          "via": "fixed",
+          "selector": "#featured-teaser-home > div.cmp-teaser__image",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        },
+        {
+          "kind": "module",
+          "px": 427,
+          "via": "fixed",
+          "selector": "#featured-teaser-home > div.cmp-teaser__content",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        },
+        {
+          "kind": "module",
+          "px": 274,
+          "via": "fixed",
+          "selector": "div.aem-Grid.aem-Grid--12 > div.image-list.list > ul.cmp-image-list > li.cmp-image-list__item",
+          "pages": [
+            "https://wknd.site/us/en.html"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "url": "https://wknd.site/us/en.html",
+          "section": 0,
+          "selector": "#container-0e03d6e9bb > div.aem-Grid.aem-Grid--12 > div.carousel.panelcontainer",
+          "px": 1192
+        },
+        {
+          "url": "https://wknd.site/us/en.html",
+          "section": 1,
+          "selector": "#container-0e03d6e9bb > div.aem-Grid.aem-Grid--12 > main.container.responsivegrid",
+          "px": 1164
+        },
+        {
+          "url": "https://wknd.site/us/en.html",
+          "section": 2,
+          "selector": "#container-0e03d6e9bb > div.aem-Grid.aem-Grid--12 > div.teaser.cmp-teaser--hero",
+          "px": 1192
+        },
+        {
+          "url": "https://wknd.site/us/en.html",
+          "section": 3,
+          "selector": "#container-0e03d6e9bb > div.aem-Grid.aem-Grid--12 > main.container.responsivegrid",
+          "px": 1164
+        }
+      ],
+      "capRegister": [],
+      "capProvenance": {
+        "writtenBy": "skills/replica/scripts/cap-probe.mjs",
+        "writtenAt": "2026-10-16T12:29:19.459Z",
+        "baseWidth": 1440,
+        "urls": [
+          "https://wknd.site/us/en.html"
+        ]
+      }
+    },
+    "componentStyle": {
+      "button": {
+        "background": "#ffea00",
+        "color": "#202020",
+        "font": "Source Sans Pro 600 14px uppercase",
+        "padding": "1em 2.5em",
+        "radius": "0"
+      }
+    },
+    "motifs": {
+      "radius": {
+        "mode": "0",
+        "pill": "50%"
+      },
+      "patterns": [
+        "full-bleed hero carousel",
+        "featured teaser",
+        "underlined section title",
+        "4-up image list",
+        "yellow rectangular CTA"
+      ]
+    },
+    "voice": {
+      "tone": "aspirational",
+      "examples": {
+        "do": [
+          "Join us on one of our next adventures.",
+          "Let us help you make your New Zealand climbing vacation a memory you will cherish forever!"
+        ],
+        "dont": []
+      }
+    },
+    "iconFont": {
+      "family": "wknd-icon-font",
+      "file": "stardust/current/assets/fonts/wknd-icon-font.ttf"
+    },
+    "metadata": {
+      "siteName": "WKND",
+      "defaultOgImage": "https://wknd.site/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-216674449.jpeg",
+      "defaultLocale": "en-US"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Yellow rectangular CTA used for every primary action.",
+      "html": "<a class=\"btn-primary\" href=\"#\">View Trips</a>",
+      "css": ".btn-primary { background: #ffea00; color: #202020; font: 600 14px/1.5 'Source Sans Pro', sans-serif; text-transform: uppercase; padding: 1em 2.5em; border-radius: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The outdoor magazine",
+    "overview": "Full-bleed landscape photography, a quiet serif for headlines, a humanist sans for everything else, and one signal yellow reserved for action.",
+    "keyCharacteristics": [
+      "flat and square",
+      "one saturated accent",
+      "photography first"
+    ],
+    "rules": [
+      {
+        "name": "Yellow means act",
+        "body": "#ffea00 appears only on calls to action and the title underline.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do keep yellow for actions only."
+    ],
+    "donts": [
+      "Don't add radius, gradients or shadows."
+    ]
+  }
+}
