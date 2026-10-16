@@ -36,7 +36,7 @@ Gate widths: 1440, 360 (skill defaults). No `--target-breakpoints`, no `--regist
 ## Open items for the owner
 
 - D1 Sign In backend · D2 analytics tags (Adobe Launch) · D3 locale trees — `stardust/dynamic-features.md`.
-- Publish decision (preview only so far).
+- Published live 2026-10-16 on request: /us/en, /nav, /footer (branch host). The main-branch host serves the old code until the PR merges.
 - The new foundation (scaffold spacing, header, footer) also applies to the 16 adventure + 5 magazine DA
   documents once they are previewed on this code — re-gate them before publishing.
 - Internal links on /us/en point at pages not yet previewed on this branch (scope debt).

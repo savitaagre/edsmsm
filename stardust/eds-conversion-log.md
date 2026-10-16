@@ -35,7 +35,7 @@ properties and block-facing classes in `styles/styles.css` are kept (additive), 
 
 ## Publish decision
 
-Preview only (`--no-publish`). Publishing live is the owner's decision after PR review.
+Preview only (`--no-publish`) through delivery. **Published live on the owner's request (2026-10-16):** `/us/en`, `/nav`, `/footer` → https://feat-wknd-home-replica--edsmsm--savitaagre.aem.live/us/en (live gate 1440 0.25 % Δh 0, 360 1.73 % Δh −1).
 
 ## Step 3 — Foundation (C0)
 

@@ -10,3 +10,4 @@
 {"ts":"2026-10-16T13:18:21Z","skill":"stardust:rollout","phase":"C-deliver","event":"start","detail":"units: foundation (C0) → archetype-landing (us-en-html) → final; preview-only"}
 {"ts":"2026-10-16T14:36:23Z","skill":"stardust:rollout","phase":"C-deliver","event":"end","detail":"units foundation/archetype-landing/final done; /us/en preview gate PASS 1440 0.25% dh0, 360 1.73% dh-1; 0 red; gate-all PASS x2; preview only","artifact":"stardust/rollout/progress.json"}
 {"ts":"2026-10-16T14:36:23Z","skill":"stardust:replica","phase":"handoff","event":"end","detail":"1 page delivered to preview (/us/en); published-origin gate PASS at 1440 and 360; rollout A,B,D-I out of scope (single URL)","artifact":"stardust/rollout/"}
+{"ts":"2026-10-16T17:51:19Z","skill":"stardust:deploy","phase":"10-reconcile","event":"end","detail":"published live: /us/en, /nav, /footer (owner request 2026-10-16); live gate 1440 0.25% dh0, 360 1.73% dh-1"}
