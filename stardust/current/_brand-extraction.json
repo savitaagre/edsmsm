@@ -1,0 +1,388 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:extract",
+    "writtenAt": "2026-10-16T12:30:00Z",
+    "readArtifacts": [
+      "https://wknd.site/us/en.html",
+      "stardust/current/pages/us-en-html.json",
+      "stardust/current/pages/us-en-html.html",
+      "stardust/current/_computed-styles.json",
+      "stardust/replica/capture/css/clientlib-site.lc-edab4768979fadcb02662ded9e221c99-lc.min.css",
+      "stardust/replica/capture/css/google-fonts.css"
+    ],
+    "synthesizedInputs": [],
+    "stardustVersion": "plugin@excat-extended",
+    "notes": [
+      "Single-page (--single) extraction: aggregation scope is the home page only; cross-page modes are not available.",
+      "Palette has 9 census clusters; the two 5%-white border and 80%-black scrim values are kept as accents (palette cap 8 → #afafaf dropped, recorded here).",
+      "Fonts and media were not saved by crawl.mjs; they were harvested by plain browser-UA curl from the URLs in the rendered DOM / Google Fonts CSS (assets are not bot-gated on this origin)."
+    ]
+  },
+  "site": {
+    "name": "WKND",
+    "tagline": "WKND is a collective of outdoors, music, crafts, adventure sports, and travel enthusiasts that want to share our experiences, connections, and expertise with the world.",
+    "originUrl": "https://wknd.site"
+  },
+  "origins": [
+    {
+      "origin": "https://wknd.site",
+      "role": "primary",
+      "pages": [
+        "us-en-html"
+      ]
+    }
+  ],
+  "logo": {
+    "kind": "img-svg",
+    "source": "img",
+    "selector": "#image-1f45f4e6a7 > a > img",
+    "url": "https://wknd.site/content/experience-fragments/wknd/language-masters/en/site/header/master/_jcr_content/root/container/container_1195249223/image.coreimg.svg/1594412560447/wknd-logo-dk.svg",
+    "localPath": "stardust/current/assets/logo.svg",
+    "alt": "WKND Logo",
+    "rect": {
+      "x": 152,
+      "y": 82,
+      "width": 128,
+      "height": 48
+    },
+    "variants": [
+      {
+        "name": "light (footer)",
+        "localPath": "stardust/current/assets/media/wknd-logo-light-0e567a4d.svg"
+      }
+    ]
+  },
+  "favicon": {
+    "url": "https://wknd.site/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/images/favicons/favicon-32.png",
+    "localPath": "stardust/current/assets/favicon.png"
+  },
+  "palette": [
+    {
+      "role": "background",
+      "value": "#ffffff",
+      "occurrences": 8282806,
+      "usedAs": [
+        "background"
+      ],
+      "sourceSelectors": [
+        "body"
+      ]
+    },
+    {
+      "role": "text-primary",
+      "value": "#202020",
+      "occurrences": 1342216,
+      "usedAs": [
+        "text",
+        "background",
+        "border"
+      ],
+      "sourceSelectors": [
+        "nav ul li ul li a",
+        "h2",
+        "#container-e4d23bfdbe (footer) background",
+        ".cmp-teaser__action-link (button-text)"
+      ]
+    },
+    {
+      "role": "primary",
+      "value": "#ffea00",
+      "occurrences": 67268,
+      "usedAs": [
+        "background"
+      ],
+      "sourceSelectors": [
+        ".cmp-teaser__action-link (background, button-background)"
+      ]
+    },
+    {
+      "role": "surface",
+      "value": "#ebebeb",
+      "occurrences": 452771,
+      "usedAs": [
+        "background",
+        "text",
+        "border"
+      ],
+      "sourceSelectors": [
+        "footer a / footer p (text)",
+        "nav > ul > li > a (button-text)"
+      ],
+      "notes": "cluster also holds #f7f7f7"
+    },
+    {
+      "role": "text-secondary",
+      "value": "#696969",
+      "occurrences": 16,
+      "usedAs": [
+        "text"
+      ],
+      "sourceSelectors": [
+        ".cmp-image-list__item-description"
+      ]
+    },
+    {
+      "role": "accent-1",
+      "value": "#0045ff",
+      "occurrences": 16,
+      "usedAs": [
+        "text"
+      ],
+      "sourceSelectors": [
+        "main .cmp-image-list__item-title-link (census: link)"
+      ]
+    },
+    {
+      "role": "accent-2",
+      "value": "rgba(0, 0, 0, 0.8)",
+      "occurrences": 200,
+      "usedAs": [
+        "background"
+      ],
+      "sourceSelectors": [
+        ".cmp-carousel__indicator (census: background)"
+      ]
+    },
+    {
+      "role": "border",
+      "value": "rgba(255, 255, 255, 0.05)",
+      "occurrences": 5,
+      "usedAs": [
+        "border"
+      ],
+      "sourceSelectors": [
+        "nav > ul > li > a (census: border)"
+      ]
+    }
+  ],
+  "type": {
+    "families": [
+      {
+        "family": "Asar",
+        "role": "heading",
+        "weights": [
+          400
+        ],
+        "count": 12,
+        "source": "Google Fonts",
+        "license": "OFL (open, self-hostable)"
+      },
+      {
+        "family": "Source Sans Pro",
+        "role": "body",
+        "weights": [
+          300,
+          400,
+          600
+        ],
+        "styles": [
+          "normal",
+          "italic"
+        ],
+        "count": 31,
+        "source": "Google Fonts",
+        "license": "OFL (open, self-hostable)"
+      }
+    ],
+    "headingFamily": "Asar",
+    "bodyFamily": "Source Sans Pro",
+    "levels": {
+      "h2": {
+        "fontSize": 36,
+        "fontWeight": 400
+      },
+      "h3": {
+        "fontSize": 24,
+        "fontWeight": 400
+      },
+      "h4": {
+        "fontSize": 16,
+        "fontWeight": 600
+      }
+    },
+    "sizes": [
+      36,
+      24,
+      18,
+      16,
+      14
+    ],
+    "files": [
+      {
+        "family": "Asar",
+        "weight": 400,
+        "style": "normal",
+        "path": "stardust/current/assets/fonts/asar-400.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 300,
+        "style": "normal",
+        "path": "stardust/current/assets/fonts/source-sans-pro-300.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 400,
+        "style": "normal",
+        "path": "stardust/current/assets/fonts/source-sans-pro-400.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 600,
+        "style": "normal",
+        "path": "stardust/current/assets/fonts/source-sans-pro-600.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 300,
+        "style": "italic",
+        "path": "stardust/current/assets/fonts/source-sans-pro-300-italic.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 400,
+        "style": "italic",
+        "path": "stardust/current/assets/fonts/source-sans-pro-400-italic.woff2",
+        "licensing": "open"
+      },
+      {
+        "family": "Source Sans Pro",
+        "weight": 600,
+        "style": "italic",
+        "path": "stardust/current/assets/fonts/source-sans-pro-600-italic.woff2",
+        "licensing": "open"
+      }
+    ],
+    "scaleAudit": {
+      "kind": "ad-hoc",
+      "basis": "36/24/18/16/14 — ratios 1.5, 1.33, 1.125, 1.14; no single modular ratio"
+    }
+  },
+  "spacing": {
+    "note": "lifted per section from clientlib-site CSS in replica Phase 3 (recreation-procedure § CSS lifting)"
+  },
+  "motifs": {
+    "radius": {
+      "mode": "0px 2px 2px 0px",
+      "pill": "50%",
+      "notes": "50% = carousel indicator dots / social icon buttons; nearly everything else is square"
+    },
+    "shadows": [
+      {
+        "value": "rgba(0, 0, 0, 0.35) -3px 0px 5px 0px inset",
+        "count": 1
+      }
+    ],
+    "gradients": [],
+    "patterns": [
+      "hero-with-image (full-bleed carousel teaser)",
+      "featured teaser (image + grey panel)",
+      "image-list cards (4-up)",
+      "underlined section title",
+      "yellow rectangular buttons"
+    ]
+  },
+  "componentStyle": {
+    "button": {
+      "background": "#ffea00",
+      "color": "#202020",
+      "font": "Source Sans Pro 600 14px uppercase",
+      "radius": "0"
+    }
+  },
+  "systemComponents": [
+    {
+      "name": "site-header",
+      "kind": "header",
+      "occurrences": 1,
+      "headingSequence": [],
+      "ctaLabels": [
+        "Sign In",
+        "en-US",
+        "Magazine",
+        "Adventures",
+        "FAQs",
+        "About Us"
+      ],
+      "exampleSlug": "us-en-html",
+      "exampleSelector": "header"
+    },
+    {
+      "name": "site-footer",
+      "kind": "footer",
+      "occurrences": 1,
+      "headingSequence": [
+        "Follow Us"
+      ],
+      "ctaLabels": [
+        "Magazine",
+        "Adventures",
+        "FAQs",
+        "About Us",
+        "Facebook",
+        "Twitter",
+        "Instagram"
+      ],
+      "exampleSlug": "us-en-html",
+      "exampleSelector": "footer"
+    }
+  ],
+  "iconFont": {
+    "family": "wknd-icon-font",
+    "file": "stardust/current/assets/fonts/wknd-icon-font.ttf",
+    "url": "https://wknd.site/etc.clientlibs/wknd/clientlibs/clientlib-site/resources/fonts/wknd-icon-font.ttf",
+    "glyphs": {
+      "cmp-button__icon--facebook": "U+E902",
+      "cmp-button__icon--instagram": "U+E903",
+      "cmp-button__icon--twitter": "U+E901",
+      "cmp-button__icon--search": "U+E913",
+      "cmp-carousel__action-icon (previous/next)": [
+        "U+E90F",
+        "U+E90E"
+      ],
+      "wkndicon-menu": "U+E916"
+    }
+  },
+  "voice": {
+    "heroHeadline": "WKND Adventures",
+    "heroSubcopy": "Join us on one of our next adventures. Browse our list of curated experiences and sign up for one when you're ready to explore with us.",
+    "heroImage": {
+      "url": "https://wknd.site/us/en/_jcr_content/root/container/carousel/item_1571954853062.coreimg.jpeg/1660323801921/adobestock-216674449.jpeg",
+      "alt": "Female sitting on a large rock relaxing in afternoon dappled light the Australian bushland with views over the river",
+      "source": "img",
+      "domPath": ".cmp-carousel__item--active .cmp-teaser__image img",
+      "localPath": "stardust/current/assets/media/adobestock-216674449-cbf8bf8d.jpeg"
+    },
+    "heroMedium": null,
+    "primaryCTALabel": "View Trips",
+    "ctaSamples": [
+      "View Trips",
+      "Full Article",
+      "All Articles",
+      "See Trip",
+      "All Trips"
+    ],
+    "navItems": [
+      "Magazine",
+      "Adventures",
+      "FAQs",
+      "About Us"
+    ],
+    "footerHeadings": [
+      "Follow Us"
+    ],
+    "firstParagraph": "Join us on one of our next adventures. Browse our list of curated experiences and sign up for one when you're ready to explore with us.",
+    "tone": {
+      "guess": "aspirational",
+      "evidence": "second-person invitations ('Join us', 'Let us help you'), place-led headlines, superlatives ('camper's heaven', 'memory you will cherish forever')"
+    }
+  },
+  "voiceTable": null,
+  "crossPromo": null,
+  "register": "brand"
+}

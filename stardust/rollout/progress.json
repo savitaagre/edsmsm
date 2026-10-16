@@ -1,0 +1,7 @@
+{
+  "units": {
+    "foundation": { "status": "running", "kind": "foundation", "templates": ["landing"], "pages": 0, "blocks": 2, "gates": {}, "startedAt": "2026-10-16T13:18:21Z", "endedAt": null, "verdict": null },
+    "archetype-landing": { "status": "pending", "kind": "archetype", "templates": ["landing"], "pages": 1, "blocks": 4, "gates": {}, "startedAt": null, "endedAt": null, "verdict": null },
+    "final": { "status": "pending", "kind": "final", "templates": ["landing"], "pages": 1, "blocks": 0, "gates": {}, "startedAt": null, "endedAt": null, "verdict": null }
+  }
+}

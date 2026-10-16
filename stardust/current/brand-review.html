@@ -1,0 +1,166 @@
+<!doctype html>
+<!-- stardust:provenance
+  writtenBy: stardust:extract
+  writtenAt: 2026-10-16T12:30:00Z
+  readArtifacts: stardust/current/_brand-extraction.json, stardust/current/_computed-styles.json, stardust/current/_crawl-log.json, stardust/current/pages/us-en-html.json, stardust/current/DESIGN.json
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WKND — current-state brand review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asar&amp;family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fff; --text:#202020; --primary:#ffea00; --primary-dark:#202020; --accent:#202020; --surface:#ebebeb; --muted:#696969; --link:#0045ff;
+    --display:'Asar',Georgia,'Times New Roman',serif; --body:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif; --mono:ui-monospace,Menlo,Consolas,monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:18px/1.5 var(--body); }
+  nav.top { position:sticky; top:0; z-index:5; background:var(--primary-dark); display:flex; gap:20px; flex-wrap:wrap; padding:12px 32px; }
+  nav.top a { color:#ebebeb; text-decoration:none; font:600 14px/1 var(--body); text-transform:uppercase; }
+  main { max-width:1164px; margin:0 auto; padding:0 14px 64px; }
+  section { padding:40px 0; border-bottom:1px solid var(--surface); break-inside:avoid; }
+  h1,h2,h3 { font-family:var(--display); font-weight:400; }
+  h2 { font-size:36px; margin:0 0 20px; display:inline-block; border-bottom:4px solid var(--primary); }
+  .hero-line { color:var(--accent); font:400 40px/1.2 var(--display); margin:8px 0; }
+  .mono { font-family:var(--mono); font-size:13px; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .stat { background:var(--surface); padding:20px; } .stat b { display:block; font:400 36px/1.1 var(--display); }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .swatch { min-height:200px; border:1px solid var(--surface); padding:12px; }
+  .chip { height:96px; border:1px solid #ddd; margin-bottom:8px; }
+  .role { font:400 18px/1.2 var(--display); text-transform:uppercase; }
+  .tag { display:inline-block; background:var(--surface); padding:2px 8px; font:600 12px/1.6 var(--body); text-transform:uppercase; margin:2px 4px 2px 0; }
+  .badge { display:inline-block; background:var(--primary); padding:2px 10px; font:600 12px/1.6 var(--body); text-transform:uppercase; }
+  .spec { border-bottom:1px solid var(--surface); padding:12px 0; }
+  .tensions { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .tension { border-left:4px solid var(--accent); background:#f7f7f7; padding:16px; }
+  .tension h4 { margin:4px 0; font:600 16px/1.3 var(--body); text-transform:uppercase; }
+  .tension p { margin:4px 0; font-size:16px; } .tension footer { font-size:13px; color:var(--muted); }
+  .components li { border-left:3px solid var(--primary); padding:6px 12px; margin:8px 0; list-style:none; }
+  .motif { height:120px; background:var(--primary); }
+  .pill { display:inline-block; border:1px solid var(--text); border-radius:999px; padding:2px 12px; margin:4px; font-family:var(--mono); font-size:13px; }
+  .pages img { width:100%; border:1px solid var(--surface); }
+  .logo { display:flex; gap:32px; align-items:center; } .logo img { max-width:280px; }
+  .logo .dark { background:var(--primary-dark); padding:16px; }
+  dl { display:grid; grid-template-columns:auto 1fr; gap:4px 16px; margin:0; } dt { font-weight:600; }
+  .bars { display:flex; align-items:flex-end; gap:12px; height:120px; } .bars div { width:40px; background:var(--primary); text-align:center; font-size:12px; }
+  @media print { nav.top { position:static; } }
+</style>
+</head>
+<body>
+<nav class="top"><a href="#masthead">Masthead</a><a href="#coverage">Coverage</a><a href="#pages">Pages</a><a href="#palette">Palette</a><a href="#type">Typography</a><a href="#voice">Voice</a><a href="#tensions">Tensions</a><a href="#motifs">Motifs</a><a href="#components">Components</a><a href="#system">System</a><a href="#logo">Logo</a><a href="#spacing">Spacing</a></nav>
+<main>
+<section id="masthead">
+  <div class="mono">https://wknd.site · current state</div>
+  <h1 style="font-size:40px;margin:8px 0 0">WKND</h1>
+  <p class="hero-line">WKND Adventures</p>
+  <p>WKND is a collective of outdoors, music, crafts, adventure sports, and travel enthusiasts that want to share our experiences, connections, and expertise with the world.</p>
+</section>
+<section id="coverage">
+  <h2>Coverage</h2>
+  <div class="stats">
+    <div class="stat"><b>1 / 1</b>pages extracted (--single, headless, live Playwright render)</div>
+    <div class="stat"><b>medium</b>wait strategy (settle 2500 ms)</div>
+    <div class="stat"><b>8 colours · 2 families</b>13 images, 7 font files, 1 icon font</div>
+  </div>
+  <p>No failures. Scope note: single-page extraction — cross-page aggregation, voice table and cross-promo detection are not available. <span class="mono">_crawl-log.json</span></p>
+</section>
+<section id="pages">
+  <h2>Pages</h2>
+  <div class="grid4 pages"><figure><img src="assets/screenshots/us-en-html-thumb.png" alt="WKND home page capture"><figcaption>WKND Adventures and Travel<br><span class="mono">/us/en.html</span></figcaption></figure></div>
+</section>
+<section id="palette">
+  <h2>Color palette</h2>
+  <div class="grid4">
+    <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="role">background</div><div class="mono">#ffffff · 8282806</div><span class="tag">background</span></div>
+    <div class="swatch"><div class="chip" style="background:#202020"></div><div class="role">text-primary</div><div class="mono">#202020 · 1342216</div><span class="tag">text</span><span class="tag">background</span><span class="tag">border</span></div>
+    <div class="swatch"><div class="chip" style="background:#ffea00"></div><div class="role">primary</div><div class="mono">#ffea00 · 67268</div><span class="tag">background</span></div>
+    <div class="swatch"><div class="chip" style="background:#ebebeb"></div><div class="role">surface</div><div class="mono">#ebebeb · 452771</div><span class="tag">background</span><span class="tag">text</span><span class="tag">border</span></div>
+    <div class="swatch"><div class="chip" style="background:#696969"></div><div class="role">text-secondary</div><div class="mono">#696969 · 16</div><span class="tag">text</span></div>
+    <div class="swatch"><div class="chip" style="background:#0045ff"></div><div class="role">accent-1</div><div class="mono">#0045ff · 16</div><span class="tag">text</span></div>
+    <div class="swatch"><div class="chip" style="background:rgba(0,0,0,.8)"></div><div class="role">accent-2</div><div class="mono">rgba(0,0,0,.8) · 200</div><span class="tag">background</span></div>
+    <div class="swatch"><div class="chip" style="background:#202020;box-shadow:inset 0 0 0 4px rgba(255,255,255,.05)"></div><div class="role">border</div><div class="mono">rgba(255,255,255,.05) · 5</div><span class="tag">border</span></div>
+  </div>
+  <p class="mono">source: _brand-extraction.json § palette · /us/en.html</p>
+</section>
+<section id="type">
+  <h2>Typography</h2> <span class="badge">No modular scale</span>
+  <div class="spec"><div class="mono">H2 · Asar 400 / 36px / 1.5</div><div style="font:400 36px/1.5 var(--display)">Camping in Western Australia</div></div>
+  <div class="spec"><div class="mono">H3 · Asar 400 / 24px / 1.5</div><div style="font:400 24px/1.5 var(--display)">Where do you want to go?</div></div>
+  <div class="spec"><div class="mono">H4 · Source Sans Pro 600 / 16px / 1.5 · uppercase</div><div style="font:600 16px/1.5 var(--body);text-transform:uppercase">Follow Us</div></div>
+  <div class="spec"><div class="mono">Body · Source Sans Pro 400 / 18px / 1.5</div><div>Join us on one of our next adventures. Browse our list of curated experiences and sign up for one when you're ready to explore with us.</div></div>
+  <div class="spec"><div class="mono">Label · Source Sans Pro 600 / 14px · uppercase</div><div style="font:600 14px/1.5 var(--body);text-transform:uppercase">All Articles</div></div>
+  <p class="mono">source: _brand-extraction.json § type · _computed-styles.json aggregate.type</p>
+</section>
+<section id="voice">
+  <h2>Voice</h2> <span class="tag">tone guess: aspirational</span>
+  <div class="stats">
+    <div class="stat">“WKND Adventures”<br><span class="mono">hero headline</span></div>
+    <div class="stat">“WKND is a collective of outdoors, music, crafts, adventure sports, and travel enthusiasts…”<br><span class="mono">tagline</span></div>
+    <div class="stat">“Join us on one of our next adventures.…”<br><span class="mono">first paragraph</span></div>
+  </div>
+  <p>CTA labels (this page): <span class="pill">View Trips</span><span class="pill">Full Article</span><span class="pill">View Trip</span><span class="pill">All Articles</span><span class="pill">See Trip</span><span class="pill">All Trips</span></p>
+  <p class="mono">voiceTable not computed (single page — heading frequency needs ≥3 pages)</p>
+</section>
+<section id="tensions">
+  <h2>Tensions</h2>
+  <div class="tensions">
+    <div class="tension"><span class="tag">T-scale</span><h4>Type scale is ad-hoc</h4><p>Type scale is ad-hoc (36 → 24 → 18 → 16 → 14, no consistent ratio). Direct will need to decide whether the target adopts a modular scale.</p><footer>_brand-extraction.json#type.scaleAudit</footer></div>
+    <div class="tension"><span class="tag">T-logo-variants</span><h4>Logo variants</h4><p>Two logo variants captured (dark header SVG, light footer SVG); no monochrome/mark-only variant. A replica keeps both as-is.</p><footer>_brand-extraction.json#logo</footer></div>
+    <div class="tension"><span class="tag">T-color-imbalance</span><h4>#0045ff text only</h4><p>Color #0045ff (accent-1) appears as text only — never as background/border/fill. Direct will need to decide: drop, expand, or keep as accent.</p><footer>_brand-extraction.json#palette</footer></div>
+    <div class="tension"><span class="tag">T-color-imbalance</span><h4>rgba(0,0,0,.8) fill only</h4><p>Color rgba(0,0,0,.8) (accent-2, carousel indicator) appears as background only — never as text/border.</p><footer>_brand-extraction.json#palette</footer></div>
+    <div class="tension"><span class="tag">T-no-tokens</span><h4>No design tokens defined</h4><p>No CSS custom properties defined (the stylesheet references var(--…) names with fallbacks only). The migration target will introduce tokens — a structural change worth calling out.</p><footer>pages/us-en-html.json#customProps</footer></div>
+  </div>
+</section>
+<section id="motifs">
+  <h2>Motifs</h2>
+  <div class="grid4">
+    <div><div class="motif" style="border-radius:50%;width:120px"></div><div class="mono">50% · 6 (indicators, social)</div></div>
+    <div><div class="motif" style="border-radius:0 2px 2px 0"></div><div class="mono">0 2px 2px 0 · 1</div></div>
+    <div><div class="motif" style="border-radius:0"></div><div class="mono">0 · everything else</div></div>
+    <div><div class="motif" style="background:#fff;box-shadow:rgba(0,0,0,.35) -3px 0 5px 0 inset"></div><div class="mono">inset -3px 0 5px rgba(0,0,0,.35)</div></div>
+  </div>
+</section>
+<section id="components">
+  <h2>Components</h2>
+  <ul class="components">
+    <li>Hero carousel (3 slides) — full-bleed hero-with-image</li>
+    <li>Featured teaser — image + grey panel</li>
+    <li>Underlined section title</li>
+    <li>Image list, 4-up cards (×2)</li>
+    <li>Primary button (yellow) (×2 standalone + teaser CTAs)</li>
+    <li>Hero teaser, image bottom ("Climbing New Zealand")</li>
+  </ul>
+</section>
+<section id="system">
+  <h2>System components</h2>
+  <ul class="components">
+    <li><span class="tag">header</span> 1/1 · CTAs: Sign In, en-US, Magazine, Adventures, FAQs, About Us</li>
+    <li><span class="tag">footer</span> 1/1 · heading: Follow Us · CTAs: Magazine, Adventures, FAQs, About Us, Facebook, Twitter, Instagram</li>
+  </ul>
+</section>
+<section id="logo">
+  <h2>Logo &amp; favicons</h2>
+  <div class="logo">
+    <img src="assets/logo.svg" alt="WKND Logo">
+    <div class="dark"><img src="assets/media/wknd-logo-light-0e567a4d.svg" alt="WKND Logo (light)" style="max-width:128px"></div>
+    <img src="assets/favicon.png" alt="favicon" width="32" height="32">
+    <dl><dt>Source</dt><dd>img in header (#image-1f45f4e6a7 &gt; a &gt; img)</dd><dt>File</dt><dd>SVG, rendered 128×48</dd><dt>Variants captured</dt><dd>dark (header), light (footer), favicon 32px PNG</dd><dt>Variants not captured</dt><dd>mark-only, monochrome</dd></dl>
+  </div>
+</section>
+<section id="spacing">
+  <h2>Spacing &amp; shape</h2>
+  <p>Base: 13.5px heading rhythm (27 / 13.5), 14px gutter, container 1164px inside a 1680px shell.</p>
+  <div class="bars"><div style="height:13.5px">13.5</div><div style="height:14px">14</div><div style="height:27px">27</div><div style="height:48px">48</div></div>
+  <p>Radii revisited: <span class="pill">0</span><span class="pill">0 2px 2px 0</span><span class="pill">50%</span></p>
+</section>
+<footer style="padding:32px 0;font-size:14px;color:var(--muted)">
+  Read: _brand-extraction.json, _computed-styles.json, _crawl-log.json, pages/us-en-html.json, DESIGN.json.
+  What's next: this run is a same-design migration — the replica flow promotes this state verbatim (no <code>$stardust direct</code>).
+  Badges: <span class="badge">yellow</span> = audit result; <span class="tag">grey</span> = usage context.
+</footer>
+</main>
+</body>
+</html>

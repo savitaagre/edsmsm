@@ -1,0 +1,49 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:replica",
+    "writtenAt": "2026-10-16T13:13:04Z",
+    "stardustVersion": "plugin@excat-extended"
+  },
+  "site": {
+    "originUrl": "https://wknd.site",
+    "deployUrl": null,
+    "extractedAt": "2026-10-16T12:22:25Z",
+    "pageCap": 1,
+    "totalDiscovered": 1,
+    "crawled": 1,
+    "captureGaps": []
+  },
+  "direction": null,
+  "flow": "replica",
+  "flowChosenAt": "2026-10-16T12:21:55Z",
+  "flowSource": "user-phrase",
+  "pages": [
+    {
+      "slug": "us-en-html",
+      "url": "https://wknd.site/us/en.html",
+      "title": "WKND Adventures and Travel",
+      "type": "landing",
+      "status": "approved",
+      "history": [
+        {
+          "status": "extracted",
+          "at": "2026-10-16T12:22:25Z"
+        },
+        {
+          "status": "prototyped",
+          "at": "2026-10-16T12:51:39Z"
+        },
+        {
+          "status": "approved",
+          "at": "2026-10-16T13:13:04Z",
+          "approvedBy": "hands-off"
+        }
+      ],
+      "stale": false,
+      "staleReason": null,
+      "currentStatePath": "stardust/current/pages/us-en-html.json",
+      "prototypePath": "stardust/prototypes/us-en-html-proposed.html",
+      "migratedPath": null
+    }
+  ]
+}

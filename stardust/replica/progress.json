@@ -1,0 +1,63 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:replica",
+    "writtenAt": "2026-10-16T13:13:00Z",
+    "liveUrl": "https://wknd.site/us/en.html",
+    "prototype": "stardust/prototypes/us-en-html-proposed.html",
+    "iterationNote": "iter1 = first --full map; fix iterations: 1 (column BFC + hidden nodes + footer) → iter2 pixel; 2 (content cap, toggle size, greeting role) → iter4 --full; 3 (titles, aria, social font, toggle line-height) → iter5 --full; iter6 = confirmation of the Home-link visibility finding from iter5 (no new fix scope). Cap of 3 fix iterations per breakpoint respected."
+  },
+  "pageTypes": {
+    "landing": {
+      "archetype": "us-en-html",
+      "status": "approved",
+      "approvedBy": "hands-off",
+      "breakpoints": {
+        "1440": {
+          "iterations": 3,
+          "result": { "structuralRed": 0, "visualFlags": "11 justified", "pixelPct": 0.20, "heightDelta": 0, "chromeParity": "quiet", "clipped": 0, "overflow": "ok", "pass": true },
+          "crops": { "header": "100.00% match (y0+194)", "footer": "100.00% match (y3494+260)" },
+          "justified": [
+            { "probe": "visual", "flag": "STRETCHED IMAGE ×11", "why": "object-fit: cover crops — the source CSS sets object-fit: cover on the same images (hero, featured teaser, image-list cards, Climbing NZ teaser)" }
+          ],
+          "residuals": [
+            { "band": "y 1000–1500", "pct": 0.9, "cause": "image resampling texture (live serves width renditions, prototype the 1280px originals)", "flaggedFor": "delivery" }
+          ],
+          "captureState": []
+        },
+        "360": {
+          "iterations": 3,
+          "result": { "structuralRed": 0, "visualFlags": "8 justified", "pixelPct": 2.08, "heightDelta": -1, "chromeParity": "quiet", "clipped": 0, "overflow": "ok", "pass": true },
+          "crops": { "header": "99.86% match (y0+117)", "footer": "96.92% match (y5281+593) — residual below" },
+          "justified": [
+            { "probe": "visual", "flag": "STRETCHED IMAGE ×8", "why": "object-fit: cover crops, as in the source CSS" }
+          ],
+          "residuals": [
+            { "band": "y 3000–3500", "pct": 5.6, "cause": "resampling texture on the Climbing New Zealand photo: live serves a 290×193 rendition upscaled to 360px, prototype a 1280×853 original downscaled; geometry identical", "flaggedFor": "delivery" },
+            { "band": "y 4000–4500", "pct": 4.7, "cause": "same rendition texture on the adventure card photos (live 172×120 renditions at 260×200)", "flaggedFor": "delivery" },
+            { "region": "footer", "pct": 3.08, "cause": "1px vertical offset: the 1280×853 original vs the live 290×193 rendition gives the Climbing NZ image a 0.32px taller box (teaser 615.41 vs 614.89px), which rounds the footer 1px lower; ghosting is glyph edges only", "parity": "gates/us-en-html-360/chrome-parity-iter6.txt (quiet)", "texture": { "thickPct": 34.4 }, "flaggedFor": "delivery" }
+          ],
+          "captureState": []
+        },
+        "2560": {
+          "result": { "capProbe": "PASS — 0 of 5 rows failed (shell 1680, modules 1192/1164/1192/1164)", "evidence": "gates/us-en-html-2560/cap-iter.json" }
+        }
+      },
+      "motion": {
+        "observed": ["stardust/replica/motion/us-en-html.json", "stardust/replica/motion/us-en-html-hover.json", "stardust/replica/motion/us-en-html-360.json"],
+        "implemented": [
+          "header scroll morph: body.scrolly at scrollTop > 15; .header-bar padding 50/50 → 15/5 (≥1025), box-shadow 0 8px 20px rgba(0,0,0,.26); transition padding .5s (the -webkit- fallback Chrome applies)",
+          "hero carousel: prev / next / indicator click → cmp-carousel__item--active + cmp-carousel__indicator--active; slide fadeIn .5s",
+          "language menu: toggle click → left = toggle.position().left − 240, showMenu / open; window click elsewhere closes",
+          "mobile nav (≤1024): toggle click → body.navPanel-visible; transform .5s on panel, toggle and page root",
+          "hover: header nav links background #ffea00; header search background #ffea00; footer nav links underline (text-decoration, verified by named-deviation probe)"
+        ],
+        "dead": [
+          "carousel autoplay (data-cmp-delay=5000 present but no autoplay; 0 idle class mutations)",
+          "hover on image-list cards and title links, teaser CTAs, primary buttons, social buttons, Sign In (no measured change)"
+        ],
+        "compare": "motion-compare: 10 parity, 0 missing, 0 extra, 0 advisory (stardust/replica/motion/us-en-html-compare.json); mobile: 3 parity",
+        "pixelAfterMotion": { "1440": 0.20, "360": 2.08 }
+      }
+    }
+  }
+}
