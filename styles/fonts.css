@@ -6,7 +6,9 @@
    lets fonts load after LCP (this file is loaded lazily by scripts.js). Only the
    families/weights/styles actually used are included:
      - Asar 400 (headings h1–h3)
-     - Source Sans Pro 300/400/600, normal + italic (body, h4–h6, <em>) */
+     - Source Sans Pro 300/400/600, normal + italic (body, h4–h6, <em>)
+   The woff2 files are the ones captured from wknd.site
+   (stardust/current/assets/fonts/), byte-identical to the gated prototype's. */
 
 /* Asar — serif headings */
 @font-face {
@@ -64,4 +66,14 @@
   font-weight: 600;
   font-display: swap;
   src: url('../fonts/source-sans-pro-600-italic.woff2') format('woff2');
+}
+
+/* wknd-icon-font — the source's glyph font (header search, social, menu,
+   carousel arrows); captured verbatim from wknd.site clientlib-site */
+@font-face {
+  font-family: wknd-icon-font;
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/wknd-icon-font.ttf') format('truetype');
 }

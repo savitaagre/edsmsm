@@ -2,7 +2,7 @@
 // Only behaviours motion-observe saw fire on the live page are implemented
 // (stardust/replica/motion/us-en-html*.json); state class names mirror the live ones.
 (() => {
-  const body = document.body;
+  const { body } = document;
 
   // Header scroll morph: body.scrolly while scrollTop > 15 (lifted from clientlib-site JS).
   const updateScrolly = () => body.classList.toggle('scrolly', window.scrollY > 15);
@@ -30,15 +30,18 @@
     dots.forEach((d, n) => d.addEventListener('click', () => show(n)));
   }
 
-  // Language menu — the live state machine (clientlib-site JS): a toggle click places the menu at
-  // `left = toggle.position().left - 240`, toggles `showMenu` / `open`; any click elsewhere closes it.
+  // Language menu — the live state machine (clientlib-site JS): a toggle click places
+  // the menu at `left = toggle.position().left - 240`, toggles `showMenu` / `open`;
+  // any click elsewhere closes it.
   const langToggle = document.querySelector('.lang-toggle');
   const langMenu = document.querySelector('.lang-menu');
   if (langToggle && langMenu) {
     langToggle.addEventListener('click', (e) => {
       e.preventDefault();
-      const parent = langToggle.offsetParent || document.body; // jQuery .position(): fractional, relative to offsetParent
-      langMenu.style.left = `${langToggle.getBoundingClientRect().left - parent.getBoundingClientRect().left - 240}px`;
+      // jQuery .position(): fractional, relative to offsetParent
+      const parent = langToggle.offsetParent || document.body;
+      const left = langToggle.getBoundingClientRect().left - parent.getBoundingClientRect().left;
+      langMenu.style.left = `${left - 240}px`;
       langMenu.classList.toggle('showMenu');
       langToggle.classList.toggle('open');
       langToggle.setAttribute('aria-expanded', 'true');
