@@ -103,7 +103,30 @@ function unbutton(node) {
   return a;
 }
 
+// The pipeline delivers an authored image title as data-title: restore it.
+function restoreTitles(root) {
+  root.querySelectorAll('img[data-title]').forEach((img) => {
+    if (!img.title) img.title = img.dataset.title;
+    img.removeAttribute('data-title');
+  });
+}
+
+// Interim (stardust/rollout/foundation-requests.md): the section's trailing CTA
+// ("All Articles") carries the source aria-label ("read our articles") as its
+// authored link title — DA has no aria-label field. A title that differs from
+// the link text becomes the accessible name; one equal to it (derived by
+// decorateButtons) is dropped.
+function promoteCtaLabels(block) {
+  const section = block.closest('.section');
+  if (!section) return;
+  section.querySelectorAll('.default-content-wrapper p a[title]').forEach((a) => {
+    if (a.title !== a.textContent) a.setAttribute('aria-label', a.title);
+    a.removeAttribute('title');
+  });
+}
+
 export default async function decorate(block) {
+  promoteCtaLabels(block);
   const cards = toCards(block);
   const list = el('ul', 'items');
 
@@ -140,4 +163,5 @@ export default async function decorate(block) {
   });
 
   block.replaceChildren(list);
+  restoreTitles(block);
 }
