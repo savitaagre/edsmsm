@@ -144,3 +144,103 @@ Preview only (`--no-publish`). Publishing live is the owner's decision after PR 
   7 flags, en-US underlined, outside click closes; hovers #ffea00 / underline; 360 panel
   −275 → 0, toggle x 285, main x 275; Welcome / Sign Out / Home present and unrendered; no
   `<header>` inside the blocks; 0 console errors.
+
+## C-ARCHETYPE landing / us-en-html (archetype-landing unit)
+
+### Step 2b — section schema + decode tiers
+
+- `stardust/eds-schema/us-en-html.json` via `section-schema.mjs`. The script only sees `<section>` /
+  `[data-section]`; the prototype has one `<section>`, so the schema was generated from an annotated
+  COPY (`stardust/.work/schema/us-en-html-annotated.html`: `<base href=":8791">` + `data-section` on
+  `.featured-teaser`, both `.image-list`, `.hero-teaser--imagebottom`; the gated prototype is untouched).
+  5 sections: hero-carousel (3 × slide, uniform: 1 heading/1 body/1 cta/1 img), featured-teaser
+  (body/heading/body/cta/img), image-list ×2 (4 × unit: 1 cta + 1 img + description), hero-teaser.
+- Tiers: `hero-carousel` reconstructive (row per slide: image | text; heading-boundary fallback for a
+  flattened cell), `image-list` reconstructive (row per card: image | text), `featured-teaser` and
+  `hero-teaser` template-slotted (empty slot template, nodes MOVED by role). Section titles, the two
+  buttons and "Where do you want to go?" are default content.
+
+### Step 7/8 — blocks (new; no existing block touched)
+
+- `blocks/hero-carousel/` — slides `.slide > .teaser > .content (.title/.description/.actions) + .media`,
+  generated text-free controls (`button.action.previous/.next` with an empty inline `span.action-icon`
+  glyph, `ol.indicators > li.indicator`, aria-label only, #100). Live state classes
+  `cmp-carousel__item--active` / `cmp-carousel__indicator--active`, `@keyframes fadeIn` (live name,
+  stylelint-disabled), no autoplay. First slide img `loading=eager` + `fetchpriority=high`; media
+  slot reserved (640px box ≥1165px, img width/height ratio below).
+- `blocks/featured-teaser/`, `blocks/hero-teaser/` — prototype rules verbatim under the block class;
+  teaser CTA repainted as the source `.btn-teaser` (float, 1em 2.5em, 49px) over `a.button`.
+- `blocks/image-list/` — `ul.items > li.item > article > a.image-link (generated, text-free, href of the
+  title link) > .image > picture`, `.title > p > a` (decorateButtons undone: card link, not a CTA),
+  `.description > p` (260px nowrap ellipsis).
+- Inline images (C0 note): `display: inline; vertical-align: baseline` in hero-carousel, hero-teaser,
+  featured-teaser, image-list. Column BFCs: `.featured-teaser-wrapper`, `.image-list-container > div`,
+  `.hero-teaser-container .default-content-wrapper` are `flow-root` (the source `.col`); the
+  hero-carousel wrapper is deliberately NOT (its floated controls overhang the 72px margin as on live).
+- Separators: two empty sections with section-metadata `style: separator` (no authored `<hr>`, #119),
+  drawn by an interim scoped rule in `image-list.css` (`.image-list-container + .separator`: 64px
+  padding, 1px solid #ebebeb box inside the 1136px content box) → foundation request.
+- Delivery-pipeline carries: the pipeline emits authored image titles as `data-title` → each block
+  restores `title`; derived CTA titles (= text, from decorateButtons) are dropped; the two section
+  buttons' source aria-labels are authored as link titles and promoted to `aria-label` by image-list
+  for its own section CTA (interim → foundation request).
+- Heading outline: the first slide title "WKND Adventures" is the page's one `<h1>` (#35/#57; the
+  source has no h1 — semantic only, styled 36px/54px like the h2s); all other titles keep source levels.
+- Round-trip (`block-roundtrip.mjs --ew`, :8791 prototype, `--map hero-teaser=.hero-teaser--imagebottom`):
+  every block exit 0, whole page exit 0 — 0 structural 🔴, EW editable 37/37, dead 0, duplicated 0.
+  🟡 MISSING BODY ×5 = the prototype's hidden control/indicator labels (not generated, #100); 🟠 EXTRA
+  = section-head default content beside the block (expected).
+
+### Step 9 — document
+
+- `stardust/deploy/content/us/en.html`: metadata section (Title "WKND Adventures and Travel",
+  Description = source meta description, Image = the source og:image URL, Template landing), then
+  hero-carousel | featured-teaser | Recent Articles + image-list + All Articles | separator |
+  Next Adventures + hero-teaser | Where do you want to go? + image-list + All Trips | separator.
+  Text, alt and title verbatim from the prototype (6 image titles). Internal hrefs root-relative,
+  extensionless.
+- Media: 13 editorial images → `media/home/` via `da-media-upload.mjs --manifest` (manifest excludes the
+  two logo SVGs; `DA_TOKEN=injected` placeholder accepted) — 13 OK, ledger `stardust/deploy/media-ledger.json`.
+- `davids-model-lint` PASS 0 🔴 0 🟡. `localize-links --source-host wknd.site --content stardust/deploy/content`
+  then `--check` PASS; the plain pass also normalised C0's `nav.html` en-US link `/us/en.html` → `/us/en`
+  (the target now exists) — nav re-PUT (200) + re-previewed (200).
+
+### Local QA (structural only)
+
+- `build-harness.mjs` + `qa-gate.mjs --schema … --design DESIGN.json --full-bleed hero-carousel,hero-teaser`:
+  PASS 26 ok / 0 warn / 0 fail (one h1, schema unit counts 3/4/4, both full-bleed wrappers 1440/1440,
+  cap 1680 @2560). The harness strips metadata as its own section — the metadata block therefore sits
+  in a dedicated first section. measure.mjs harness vs prototype: scrollHeight 3754 = 3754 @1440,
+  5875 = 5875 @360. `npm run lint` 0 errors; `foundation-freeze check` unchanged (31 files).
+
+### Deploy (preview only)
+
+- Commits `e073181` (blocks + document), `9efefc9` (title / aria-label carries); pushed; code sync 202;
+  served block JS/CSS byte-identical to the repo. DA PUT `/us/en.html` 201 then 200; preview 200 ×2.
+- `.plain.html` 200: 8 sections (metadata section empty), 13 `<img>` / 13 alt, 0 `about:error`, one h1,
+  no `/img/`; head: title, description, og:image (source URL), template landing.
+- `ai-readability.mjs`: strict 100 %, code 100 % (main served gap 0 / 467).
+- Computed-style guard (1440 + 360): 5 blocks decorated + `data-block-name`, flex where expected,
+  3 slides (1 active), cards 4/4, 11 visible images all `clientWidth > 0`, 0 pageerror, overflow 0,
+  docH 3754 / 5875.
+
+### Published-origin gate (preview origin)
+
+- pub1: 1440 0.25 % Δh 0, 360 1.73 % Δh −1; content-diff 8 🔴 (2 MISSING ARIA-LABEL real → fixed).
+- pub2 (final; 2 of 3 rounds used): **1440 0.25 % Δh 0** (max band 0.9 % y1000–1500, image rendition
+  texture), **360 1.73 % Δh −1** (max band 5.1 % y4000–4500 card photos, 4.7 % y4500–5000, 4.5 %
+  footer tail, 3.5 % Climbing NZ photo — the prototype round's rendition-texture residuals); overflow
+  ok; clip 0; content-presence MISSING 0 / HIDDEN 0; chrome-parity: only the 2 known DA media-hash
+  logo filenames; crop-compare header 100.00 % / 99.86 %, footer 100.00 % / 99.23 % (360: `--y-b` +1).
+  content-diff 6 🔴 at each width, all justified: ROLE SWAP + MISSING CTA "San Diego Surf Spots" = one
+  pairing artifact (the source's visually hidden indicator label of the same text pairs with the
+  card link; the build's indicators carry aria-label only, #100; content-presence finds the link);
+  MISSING ICON ×4 = frozen C0 chrome glyph structure (pixels identical) → foundation request.
+- Motion (motion-observe on the preview, same pokes as `motion/us-en-html.json` + the 8 hover families):
+  10 parity, 0 missing, 0 extra (`motion/us-en-html-eds.json`); 360 mobile nav 3 parity
+  (`motion/us-en-html-360-eds.json`).
+- gate-all: state.json has the page `approved` with no `liveUrl` (gate-all selects `deployed` rows),
+  so it ran on a temporary state copy (`stardust/.work/schema/state-gate-all.json`, ledger untouched):
+  `--only us-en-html` 1440 PASS 0.25 % Δh 0, 360 PASS 1.73 % Δh −1, clip 0, content 0/0 (browser
+  tier chromium-fallback — Chrome not installed).
+- Residual 🟡: Climbing NZ image title not delivered (title == alt; the pipeline drops it).
