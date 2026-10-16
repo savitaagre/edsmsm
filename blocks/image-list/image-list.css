@@ -1,0 +1,95 @@
+/* image-list — values lifted verbatim from the gated replica prototype
+   (stardust/prototypes/us-en-html.css: .image-list, .separator). */
+
+/* the section's columns (title, list, button) are flow-root, as the source
+   .col is — margins stay inside each column */
+main .image-list-container > div {
+  display: flow-root;
+}
+
+.image-list .items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: normal;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.image-list .item {
+  box-sizing: content-box;
+  flex-basis: 260px;
+  margin: 0 0 32px;
+  padding-right: 14px;
+}
+
+/* the source image is INLINE (baseline gap below the 200px image) */
+.image-list .image img {
+  display: inline;
+  vertical-align: baseline;
+  width: 100%;
+  max-width: none;
+  height: 200px;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-list .title p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.image-list .title a:any-link {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.image-list .description p {
+  display: block;
+  width: 260px;
+  margin: 16px 0 0;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  line-height: 21px;
+  text-align: left;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (width <= 767px) {
+  .image-list .items {
+    justify-content: space-between;
+  }
+
+  .image-list .item {
+    padding-right: 0;
+  }
+}
+
+/* Separator (source .separator > hr: 1px solid #ebebeb, 64px above/below,
+   inside the content shell). Authored as an empty section with section
+   metadata `style: separator` (an authored <hr> is the section delimiter).
+   Interim scoped rule — both separators follow an image-list section — until
+   the foundation ships a generic `.section.separator`
+   (stardust/rollout/foundation-requests.md). */
+main > .section.image-list-container + .section.separator {
+  padding: 64px var(--gutter);
+}
+
+main > .section.image-list-container + .section.separator::before {
+  content: "";
+  display: block;
+  max-width: calc(var(--shell) - 2 * var(--gutter));
+  height: 0;
+  margin: 0 auto;
+  border: 1px solid var(--surface-grey);
+}
