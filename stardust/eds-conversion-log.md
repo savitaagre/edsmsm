@@ -82,8 +82,13 @@ Preview only (`--no-publish`). Publishing live is the owner's decision after PR 
   prototype's). Roboto files left in place (unreferenced; harmless).
 - `wknd-icon-font.ttf` copied to `fonts/`, `@font-face` (font-display: block) in `styles/fonts.css`.
 - Metric-matched `source-sans-pro-fallback` (Arial) and `asar-fallback` (Times New Roman) faces in
-  styles.css, named second in both stacks; values measured in Chromium (canvas TextMetrics vs the
-  local face — fontTools not available): SSP 82.79 / 118.36 / 32.61 %, Asar 85.32 / 140.66 / 65.64 %.
+  styles.css, named second in both stacks. Values per the #11 recipe (fontTools unavailable, so
+  head/hhea/cmap/hmtx were read from the woff2 brotli stream directly); size-adjust uses the
+  capsize frequency-weighted a–z+space advance, because the subsets' OS/2 xAvgCharWidth is
+  polluted by non-Latin glyphs: SSP vs Arial 94.16 / 104.51 / 28.99 %, Asar vs Times New Roman
+  105.13 / 113.76 / 52.98 % (size / ascent / descent; line-gap 0). Linux capture hosts have no
+  Arial/Times, so stitch-shot warns that the two `-fallback` faces failed to load — expected,
+  the brand faces load (verified: Asar 400, SSP 400/600, wknd-icon-font).
   Latin `unicode-range` only, so glyphs outside the brand subset (footer "Ⓒ") fall through to the
   source's own system stack. head.html carries no font lines.
 - Favicon: `stardust/current/assets/favicon.png` → `/favicon.png`, one `<link rel="icon">` in
